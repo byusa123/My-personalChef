@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     profic_pic = models.ImageField(null=True, blank=True)
-    phone_number = models.CharField(unique=True)
+    phone_number = models.CharField(unique=True, max_length=40)
     
 
     def __str__(self):
