@@ -4,6 +4,7 @@ from .models import User
 from .forms import createUserForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from mainApp.models import *
 # Create your views here.
 
 def homePage(request):
@@ -12,10 +13,15 @@ def homePage(request):
     return render(request, 'firstPage.html')
 
 
+# def homePage1(request):
+#     # users = A.objects.all()
+#     # context = {'users': users}
+#     return render(request, 'index.html')
+
 def homePage1(request):
-    # users = A.objects.all()
-    # context = {'users': users}
-    return render(request, 'index.html')
+    meals_b = Meal.objects.all()
+    context = {'meals_b': meals_b}
+    return render(request,'index.html', context)
 
 # @method_decorator(login_required, name='dispatch')
 def home(request):
@@ -41,7 +47,7 @@ def signUp(request):
         form = createUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('homePage2')
+            return redirect('homePage1')
             # username = form.cleaned_data.get('username')
             # messages.success(request, 'The chef was successful created'+username)
 

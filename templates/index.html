@@ -232,29 +232,31 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row" id="tabs">
-                        <div class="col-lg-12">
+                         <!-- <div class="col-lg-12">
                             <div class="heading-tabs">
                                 <div class="row">
-                                    <div class="col-lg-6 offset-lg-3">
+                                     <div class="col-lg-6 offset-lg-3">
                                         <ul>
                                           <li><a href='#tabs-1'><img src="{% static 'images/tab-icon-01.png' %}" alt="">Breakfast</a></li>
                                           <li><a href='#tabs-2'><img src="{% static 'images/tab-icon-02.png' %}" alt="">Lunch</a></a></li>
                                           <li><a href='#tabs-3'><img src="{% static 'images/tab-icon-03.png' %}" alt="">Dinner</a></a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
-                        </div>
+                        </div>  -->
                         <div class="col-lg-12">
                             <section class='tabs-content'>
-                                <article id='tabs-1'>
+                                <!-- <article id='tabs-1'> -->
+
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        {% for b in meals %}
+                                         <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="left-list">
                                                     <div class="col-lg-12">
                                                         <div class="tab-item">
-                                                            <img  src="{% static 'images/tab-item-01.png' %}" alt="">
+                                                            <img  src="{% b.me %}" alt="">
                                                             <h4>Fresh Chicken Salad</h4>
                                                             <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
                                                             <div class="price">
@@ -266,7 +268,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        {% endfor %}
+                                        <!-- <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="right-list">
                                                     <div class="col-lg-12">
@@ -281,10 +284,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </article>  
-                                <article id='tabs-2'>
+                                        </div> -->
+                                    <!-- </div> -->
+                                <!-- </article>   -->
+                                <!-- <article id='tabs-2'>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="row">
@@ -321,8 +324,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </article>  
-                                <article id='tabs-3'>
+                                </article>   -->
+                                <!-- <article id='tabs-3'>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="row">
@@ -357,7 +360,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </article>   
+                                </article>    -->
                             </section>
                         </div>
                     </div>

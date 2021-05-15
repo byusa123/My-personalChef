@@ -31,6 +31,7 @@ APPOINTMENT = [
 class Meal(models.Model):
     user_chef  = models.ForeignKey(settings.AUTH_USER_MODEL, max_length=30,null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
+    
     date_created = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
     
