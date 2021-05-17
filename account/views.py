@@ -41,7 +41,7 @@ def signUp(request):
         form = createUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('homePage2')
+            return redirect('homePage1')
             # username = form.cleaned_data.get('username')
             # messages.success(request, 'The chef was successful created'+username)
 

@@ -1,14 +1,38 @@
 from django.shortcuts import render, redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import  Meal, Schedule, booking
-from .serializer import MealSerializer, ScheduleSerializer, bookingSerializer
+from .models import  *
+from .serializer import *
 from rest_framework import status
+from django.contrib.auth.models import User
+from django.views.generic import ListView, CreateView, DetailView
+    
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+
+    user_chef = User.objects.all()
+    
+    meals = Meal.objects.all()
+    print(meals)
+    
+    return render(request, 'index.html', {"user_chef": user_chef, "meals":meals})
+
+# class indexView(ListView):
+#     template_name = 'index.html'
+#     model = Meal
+
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context=super(indexView, self).get_context_data(**kwargs)
+#         context['all_break'] = Meal.objects.filter(category ='Breakfast')
+#         return context
+
+
+def chef_detail(request,id):
+    single_chef = User.objects.get(pk= id)
+    schedules = Schedule.get_schedule_by_chef(id)
+    return render(request,'chef_detail.html',{"single_chef":single_chef, "schedules":schedules})
 
 class MealList(APIView):
     def get(self, request, format=None):
@@ -39,13 +63,13 @@ class ScheduleList(APIView):
 
 class bookingList(APIView):
     def get(self, request, format=None):
-        all_booking = booking.objects.all()
-        serializers = bookingSerializer(all_booking, many=True)
+        all_booking = Booking.objects.all()
+        serializers = BookingSerializer(all_booking, many=True)
         return Response(serializers.data)
 
 
     def post(self, request, format=None):
-        serializers = bookingSerializer(data=request.data)
+        serializers = BookingSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)

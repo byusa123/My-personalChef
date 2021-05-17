@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Meal, Schedule, booking
-
+from .models import *
 class MealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Meal
@@ -13,7 +12,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
         fields = ("id", "date", "user_chef", "status")
 
 
-class bookingSerializer(serializers.ModelSerializer):
+class BookingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = booking
+        model = Booking
         fields = ("id", "user_client", "user_chef", "status", "schedule", "number_people", "location" )
