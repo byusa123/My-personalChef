@@ -1,12 +1,12 @@
 /* html.lb-disable-scrolling {
-  overflow: hidden; */
-  /* Position fixed required for iOS. Just putting overflow: hidden; on the body is not enough. */
-  /* position: fixed;
+  overflow: hidden;
+  Position fixed required for iOS. Just putting overflow: hidden; on the body is not enough. 
+ position: fixed;
   height: 100vh;
-  width: 100vw; */
-}
+  width: 100vw;
+} */
 
-/* .lightboxOverlay {
+ .lightboxOverlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -200,4 +200,4 @@
   cursor: pointer;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
-} */
+}
