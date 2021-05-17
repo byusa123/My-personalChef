@@ -170,9 +170,9 @@
                                 <div class="row">
                                     <div class="col-lg-6 offset-lg-3">
                                         <ul>
-                                          <li><a href='#tabs-1'><img src="assets/images/tab-icon-01.png" alt="">Breakfast</a></li>
-                                          <li><a href='#tabs-2'><img src="assets/images/tab-icon-02.png" alt="">Lunch</a></a></li>
-                                          <li><a href='#tabs-3'><img src="assets/images/tab-icon-03.png" alt="">Dinner</a></a></li>
+                                          <li><a href='#tabs-1'><img src="{% static 'images/tab-icon-01.png' %}"  alt="">Breakfast</a></li>
+                                          <li><a href='#tabs-2'><img  src="{% static 'images/tab-icon-02.png' %}"  alt="">Lunch</a></a></li>
+                                          <li><a href='#tabs-3'><img  src="{% static 'images/tab-icon-03.png' %}"  alt="">Dinner</a></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -181,7 +181,30 @@
                         <div class="col-lg-12">
                             <section class='tabs-content'>
                                 <article id='tabs-1'>
-                                    
+                                    <div class="row">
+                                        {% for mel in meals %}
+                                        {% if mel.category == 'category'%}
+                                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                                            <a href="{% url 'meal_detail' mel.id %}" style="text-decoration: none;">
+                                                <div class="card mb-4 shadow-lg">
+                                                    <img alt="Card image cap" class="card-img-top img-fluid" src="{mel.meal_image.url}}"
+                                                        style="width: 30rem; height: 17rem;">
+                        
+                                                    <div class="card-body text-center">
+                                                        <h6 class="card-title mb-0"
+                                                            style="text-transform: uppercase;color: #fb5849;;font-weight: bold;font-size: 15px;">
+                                                           {{mel.name}}</h6>
+                                                        <!-- <div class="card-text text-back-50"
+                                                            style="text-transform: uppercase;color: rgb(150, 148, 148);font-weight: bold;font-size: 13px;">
+                                                            {{mel.chef}}
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
                                 </article> 
                                 <article id='tabs-2'>
                                     
