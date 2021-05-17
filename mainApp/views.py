@@ -6,9 +6,31 @@ from .serializer import *
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.views.generic import ListView, CreateView, DetailView
-    
+from .forms import *
+
 
 # Create your views here.
+'''
+Function written by INGABIRE PART
+'''
+
+def addMeals(request):
+    form = CreateMealsForm()
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = CreateMealsForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('')
+
+    context = {'form': form}
+    return render(request, 'chefDashboard/addmeals.html', context)
+
+
+
+'''
+Function written by INGABIRE END
+'''
 
 def index(request):
 
@@ -33,6 +55,14 @@ def chef_detail(request,id):
     single_chef = User.objects.get(pk= id)
     schedules = Schedule.get_schedule_by_chef(id)
     return render(request,'chef_detail.html',{"single_chef":single_chef, "schedules":schedules})
+
+
+
+'''
+API PART START
+'''
+
+
 
 class MealList(APIView):
     def get(self, request, format=None):
@@ -74,3 +104,9 @@ class bookingList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+'''
+API PART END
+'''
