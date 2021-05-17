@@ -11,8 +11,33 @@
         <title>Personal Chef</title>
         <link href="{% static 'dist/css/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        .sm{
+           background-color: wheat;
+       }
+       .bt{
+           background-color: orange;
+           color: white;
+           border: white;
+       }
+       .bt:hover{
+           background-color: white;
+           color: orange;
+           border: orange;
+       }
+       .sm1{
+           color: orange;
+       }
+       .sm1:hover{
+           color: white;
+           background-color: orange;
+
+       }
+
+    </style>
     </head>
-    <body class="bg-primary">
+    <!-- bg-primary -->
+    <body class="sm">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -26,53 +51,72 @@
                                             {% csrf_token %}
 
                                             <div class="form-row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputFirstName">Username</label>
                                                         {{form.username}}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputFirstName">First Name</label>
                                                         {{form.first_name}}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputLastName">Last Name</label>
                                                     {{form.last_name}}
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                        {{form.email}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="phone_number">Phone_number</label>
+                                                    {{form.phone_number}}
+                                                    </div>
+                                                </div>
+
+
                                             </div>
-                                            <div class="form-group">
+
+
+
+                                            <!-- <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
                                                 {{form.email}}
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="phone_number">phone_number</label>
                                                 {{form.phone_number}}
-                                            </div>
+                                            </div> -->
                                             <div class="form-row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputPassword">Password</label>
                                                        {{form.password1}}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
                                                        {{form.password2}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="text-center"><button type="submit" class="btn btn-md btn-success-100 ">Save</button></div>
+                                            <div class="text-center"></div>
+                                            <button type="submit" class=" bt btn btn-primary btn-lg btn-block">Sign in</button>
                                             <!-- <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="{% url 'dashboard2' %}">Create Account</a></div> -->
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="{% url 'login' %}">Have an account? Go to login</a></div>
+                                        <div class="small"><a class="sm1" href="{% url 'login' %}">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>
