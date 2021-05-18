@@ -15,24 +15,24 @@ Function written by INGABIRE PART
 
 
 def addMeals(request):
-    form = CreateMealsForm()
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            form = CreateMealsForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('')
+    form = CreateMealsForm(request=request)
+
+    if request.method == 'POST':
+        form = CreateMealsForm(request.POST, request=request)
+        if form.is_valid():
+            form.save()
+            return redirect('add_meals')
 
     context = {'form': form}
     return render(request, 'chefDashboard/addmeals.html', context)
 
 
 def index(request):
-    users = User.objects.filter(is_chef=True)
+    chefs = User.objects.filter(is_chef=True)
     meals_lunch = Meal.objects.filter(category='Lunch')
     meals_break = Meal.objects.filter(category='BreakFast')
     meals_dinner = Meal.objects.filter(category='Dinner')
-    context = {'users': users, 'meals_lunch': meals_lunch, 'meals_break': meals_break, 'meals_dinner': meals_dinner}
+    context = {'chefs': chefs, 'meals_lunch': meals_lunch, 'meals_break': meals_break, 'meals_dinner': meals_dinner}
     return render(request, 'index.html', context)
 
 '''
