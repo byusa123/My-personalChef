@@ -1,6 +1,7 @@
 from django.forms import ModelForm, fields
 from .models import *
 
+
 class CreateMealsForm(ModelForm):
     class Meta:
         model = Meal
@@ -11,4 +12,3 @@ class CreateMealsForm(ModelForm):
         super(CreateMealsForm, self).__init__(*args, **kwargs)
         self.fields['user_chef'].queryset = User.objects.filter(is_chef=True)
         self.fields['user_chef'].empty_label = None
-
