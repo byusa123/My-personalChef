@@ -1,4 +1,5 @@
-{% load static%}
+<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
   <head>
@@ -10,15 +11,14 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    
-    {% if title %}
-    <title>My Personal Chef- {{title}}</title>
-    {% else %}
     <title>My Personal Chef</title>
-    {% endif %}
-  
-    {% block styles %}
-     
+<!--
+    
+TemplateMo 558 Klassy Cafe
+
+https://templatemo.com/tm-558-klassy-cafe
+
+-->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 
@@ -29,11 +29,20 @@
     <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
-    {% endblock %}
+
     </head>
     
     <body>
     
+    <!-- ***** Preloader Start ***** -->
+    <!-- <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>   -->
+    <!-- ***** Preloader End ***** -->
     
     
     <!-- ***** Header Area Start ***** -->
@@ -51,8 +60,29 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
+                           	
+                        <!-- 
+                            <li class="submenu">
+                                <a href="javascript:;">Drop Down</a>
+                                <ul>
+                                    <li><a href="#">Drop Down Page 1</a></li>
+                                    <li><a href="#">Drop Down Page 2</a></li>
+                                    <li><a href="#">Drop Down Page 3</a></li>
+                                </ul>
+                            </li>
+                        -->
                             <li class="scroll-to-section"><a href="#menu">Meal</a></li>
                             <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                            <li class="submenu">
+                                <a href="javascript:;">Features</a>
+                                <ul>
+                                    <li><a href="#">Features Page 1</a></li>
+                                    <li><a href="#">Features Page 2</a></li>
+                                    <li><a href="#">Features Page 3</a></li>
+                                    <li><a href="#">Features Page 4</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
@@ -87,21 +117,21 @@
                           <!-- Item -->
                           <div class="item">
                             <div class="img-fill">
-                                <img  src="{% static 'images/slide01.jpg' %}" alt="">
+                                <img src="assets/images/slide01.jpg" alt="">
                             </div>
                           </div>
                           <!-- // Item -->
                           <!-- Item -->
                           <div class="item">
                             <div class="img-fill">
-                                <img src="{% static 'images/slide02.jpg' %}"alt="">
+                                <img src="assets/images/slide02.jpg" alt="">
                             </div>
                           </div>
                           <!-- // Item -->
                           <!-- Item -->
                           <div class="item">
                             <div class="img-fill">
-                                <img src="{% static 'images/slide03.jpg' %}" alt="">
+                                <img src="assets/images/slide03.jpg" alt="">
                             </div>
                           </div>
                           <!-- // Item -->
@@ -126,13 +156,13 @@
                         <p>My Personal Chef is one of the best, we came to the understanding that food excites everyone. Well, hunger at least is something we all agree upon without much ado. And nothing satisfies you like a delicious homely preparation. <br><br>This is an app that serves those with a craving for specific homely dishes and wants it prepared at their home. </p>
                         <div class="row">
                             <div class="col-4">
-                                <img  src="{% static 'images/about-thumb-01.jpg' %}" alt="">
+                                <img src="assets/images/about-thumb-01.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="{% static 'images/about-thumb-02.jpg' %}"alt="">
+                                <img src="assets/images/about-thumb-02.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="{% static 'images/about-thumb-03.jpg' %}"alt="">
+                                <img src="assets/images/about-thumb-03.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -140,7 +170,8 @@
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
                         <div class="thumb">
-                            <img  src="{% static 'images/aboutvideobg.jpg' %}"  height="500
+                            <!-- <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a> -->
+                            <img src="assets/images/aboutvideobg.jpg"  height="500
                             " alt="">
                         </div>
                     </div>
@@ -149,9 +180,83 @@
         </div>
     </section>
     <!-- ***** About Area Ends ***** -->
-    <!--- chef Area starts -->
-    <!-- chef Area Ends-->
-    <!-- ***** meals Area Starts ***** -->!
+
+
+    
+
+    <!-- ***** Chefs Area Starts ***** -->
+    <section class="section" id="chefs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4 text-center">
+                    <div class="section-heading">
+                        <h6>Our Chefs</h6>
+                        <h2>We bring to you the best chef in town</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="#">
+                    <div class="chef-item">
+                        
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                            <img src="assets/images/chefs-01.jpg" alt="Chef #1">
+                        </div>
+                        <div class="down-content">
+                            <h4>Randy Walker</h4>
+                            <span>Pastry Chef</span>
+                        </div>
+                    </div>
+                </a>
+                </div>
+                <div class="col-lg-4">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                            <img src="assets/images/chefs-02.jpg" alt="Chef #2">
+                        </div>
+                        <div class="down-content">
+                            <h4>David Martin</h4>
+                            <span>Cookie Chef</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                            </ul>
+                            <img src="assets/images/chefs-03.jpg" alt="Chef #3">
+                        </div>
+                        <div class="down-content">
+                            <h4>Peter Perkson</h4>
+                            <span>Pancake Chef</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Chefs Area Ends ***** -->
+
+    <!-- ***** Menu Area Starts ***** -->
+
     <section class="section" id="offers">
         <div class="container">
             <div class="row">
@@ -182,35 +287,112 @@
                             <section class='tabs-content'>
                                 <article id='tabs-1'>
                                     <div class="row">
-                                        {% for mel in meals %}
-                                        {% if mel.category == 'category'%}
-                                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                                            <a href="{% url 'meal_detail' mel.id %}" style="text-decoration: none;">
-                                                <div class="card mb-4 shadow-lg">
-                                                    <img alt="Card image cap" class="card-img-top img-fluid" src="{mel.meal_image.url}}"
-                                                        style="width: 30rem; height: 17rem;">
-                        
-                                                    <div class="card-body text-center">
-                                                        <h6 class="card-title mb-0"
-                                                            style="text-transform: uppercase;color: #fb5849;;font-weight: bold;font-size: 15px;">
-                                                           {{mel.name}}</h6>
-                                                        <!-- <div class="card-text text-back-50"
-                                                            style="text-transform: uppercase;color: rgb(150, 148, 148);font-weight: bold;font-size: 13px;">
-                                                            {{mel.chef}}
-                                                        </div> -->
+
+                                        {% for foo in meals_break %}
+                                          <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="left-list">
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="{{ foo.meal_image.url }}" alt="" >
+                                                            <h4>Fresh Chicken Salad</h4>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
+                                                            <div class="price">
+                                                                <h6>$10.50</h6>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-                                        {% endif %}
+
                                         {% endfor %}
+
+
                                     </div>
-                                </article> 
+                                </article>  
                                 <article id='tabs-2'>
-                                    
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="left-list">
+                                                    
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/tab-item-05.png" alt="">
+                                                            <h4>Dollma Pire</h4>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
+                                                            <div class="price">
+                                                                <h6>$18</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </article>  
                                 <article id='tabs-3'>
-                                    
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="left-list">
+                                                   
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/tab-item-02.png" alt="">
+                                                            <h4>Fruit Salad</h4>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
+                                                            <div class="price">
+                                                                <h6>$10</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+{#                                        <div class="col-lg-6">#}
+{#                                            <div class="row">#}
+{#                                                <div class="right-list">#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="assets/images/tab-item-06.png" alt="">#}
+{#                                                            <h4>Fresh Chicken Salad</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$8.50</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="assets/images/tab-item-01.png" alt="">#}
+{#                                                            <h4>Dollma Pire</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$9</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="tab-item">#}
+{#                                                            <img src="assets/images/tab-item-04.png" alt="">#}
+{#                                                            <h4>Omelette & Cheese</h4>#}
+{#                                                            <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>#}
+{#                                                            <div class="price">#}
+{#                                                                <h6>$11</h6>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+                                    </div>
+
                                 </article>   
                             </section>
                         </div>
@@ -237,6 +419,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
@@ -249,10 +432,8 @@
             </div>
         </div>
     </footer>
-    {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
-    <!-- jQuery -->
+
+     <!-- jQuery -->
     <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
 
     <!-- Bootstrap -->
@@ -266,15 +447,14 @@
     <script src="{% static 'js/scrollreveal.min.js' %}"></script>
     <script src="{% static 'js/waypoints.min.js' %}"></script>
     <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-    <script src="{% static 'js/imgfix.min.js' %}"></script> 
-    <script src="{% static 'js/slick.js' %}"></script> 
-    <script src="{% static 'js/lightbox.js' %}"></script> 
-    <script src="{% static 'js/isotope.js' %}"></script> 
-    
+    <script src="{% static 'js/imgfix.min.js' %}"></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/isotope.js' %}"></script>
+
     <!-- Global Init -->
     <script src="{% static 'js/custom.js' %}"></script>
-    
-    {% endblock %} 
+
     <script>
 
         $(function() {

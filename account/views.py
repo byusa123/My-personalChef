@@ -12,10 +12,7 @@ def homePage(request):
     return render(request, 'firstPage.html')
 
 
-def homePage1(request):
-    # users = A.objects.all()
-    # context = {'users': users}
-    return render(request, 'index.html')
+
 
 # @method_decorator(login_required, name='dispatch')
 def home(request):
