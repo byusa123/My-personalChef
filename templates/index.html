@@ -181,7 +181,8 @@ https://templatemo.com/tm-558-klassy-cafe
     </section>
     <!-- ***** About Area Ends ***** -->
 
-    \
+
+    
 
     <!-- ***** Chefs Area Starts ***** -->
     <section class="section" id="chefs">
@@ -255,6 +256,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Chefs Area Ends ***** -->
 
     <!-- ***** Menu Area Starts ***** -->
+
     <section class="section" id="offers">
         <div class="container">
             <div class="row">
@@ -273,9 +275,9 @@ https://templatemo.com/tm-558-klassy-cafe
                                 <div class="row">
                                     <div class="col-lg-6 offset-lg-3">
                                         <ul>
-                                          <li><a href='#tabs-1'><img src="assets/images/tab-icon-01.png" alt="">Breakfast</a></li>
-                                          <li><a href='#tabs-2'><img src="assets/images/tab-icon-02.png" alt="">Lunch</a></a></li>
-                                          <li><a href='#tabs-3'><img src="assets/images/tab-icon-03.png" alt="">Dinner</a></a></li>
+                                          <li><a href='#tabs-1'><img src="{% static 'images/tab-icon-01.png' %}"  alt="">Breakfast</a></li>
+                                          <li><a href='#tabs-2'><img  src="{% static 'images/tab-icon-02.png' %}"  alt="">Lunch</a></a></li>
+                                          <li><a href='#tabs-3'><img  src="{% static 'images/tab-icon-03.png' %}"  alt="">Dinner</a></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -285,6 +287,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <section class='tabs-content'>
                                 <article id='tabs-1'>
                                     <div class="row">
+
                                         {% for foo in meals_break %}
                                           <div class="col-lg-6">
                                             <div class="row">
@@ -298,15 +301,19 @@ https://templatemo.com/tm-558-klassy-cafe
                                                                 <h6>$10.50</h6>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
+
                                         {% endfor %}
+
 
                                     </div>
                                 </article>  
                                 <article id='tabs-2'>
+
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="row">
@@ -385,6 +392,7 @@ https://templatemo.com/tm-558-klassy-cafe
 {#                                            </div>#}
 {#                                        </div>#}
                                     </div>
+
                                 </article>   
                             </section>
                         </div>
@@ -393,7 +401,7 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
         </div>
     </section>
-    <!-- ***** Chefs Area Ends ***** --> 
+    <!-- ***** meals Area Ends ***** --> 
     
     <!-- ***** Footer Start ***** -->
     <footer>
