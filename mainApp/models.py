@@ -7,11 +7,11 @@ from personalChef import settings
 
 # Create your models here.
 
-CATEGORY = [
-    ('Lunch', 'Lunch'),
-    ('BreakFast', 'BreakFast'),
-    ('Dinner', 'Dinner'),
-]
+# CATEGORY = [
+#     ('Lunch', 'Lunch'),
+#     ('BreakFast', 'BreakFast'),
+#     ('Dinner', 'Dinner'),
+# ]
 
 STATUS = [
     ('available', 'available'),
@@ -26,6 +26,31 @@ STATUS = [
 # ]
 
 # MEAL CLASS
+class Category(models.Model):
+    category = models.CharField(max_length= 255)
+    
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+        
+    @classmethod
+    def get_category(cls):
+        categories = cls.objects.all()
+        return categories
+    
+    @classmethod
+    def search_by_category(cls, search_term):
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
+    
+    def __str__(self):
+        return self.category
+   
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class Meal(models.Model):
@@ -34,7 +59,7 @@ class Meal(models.Model):
     meal_image = models.ImageField(upload_to='meals/',blank=True)
     description=models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
-    category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
 
     def save_meal(self):
         self.save()
@@ -44,6 +69,9 @@ class Meal(models.Model):
         
     def __str__(self):
         return self.name
+
+    def all_meal(cls):
+        return cls.objects.all()   
 
 
 class Schedule(models.Model):

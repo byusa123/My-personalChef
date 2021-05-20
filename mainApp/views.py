@@ -15,7 +15,7 @@ def index(request):
     user_chef = User.objects.all()
     
     meals = Meal.objects.all()
-    print(meals)
+    # print(meals)
     
     return render(request, 'index.html', {"user_chef": user_chef, "meals":meals})
 
