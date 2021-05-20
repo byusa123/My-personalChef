@@ -4,7 +4,6 @@ from django.db.models.lookups import IsNull
 from account.models import *
 from personalChef import settings
 
-
 # Create your models here.
 
 # CATEGORY = [
@@ -18,11 +17,12 @@ STATUS = [
     ('taken', 'taken'),
 ]
 
+
 # APPOINTMENT = [
 #     ('waiting', 'waiting'),
 #     ('booked', 'booked'),
 #     ('active', 'active'),
-    
+
 # ]
 
 # MEAL CLASS
@@ -54,19 +54,24 @@ class Category(models.Model):
 
 
 class Meal(models.Model):
-    user_chef  = models.ForeignKey(settings.AUTH_USER_MODEL, max_length=30,null=True, on_delete=models.CASCADE)
+    user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, max_length=30, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-    meal_image = models.ImageField(upload_to='meals/',blank=True)
-    description=models.CharField(max_length=100, null=True)
+    meal_image = models.ImageField(upload_to='meals/', blank=True, default='food.png')
+    description = models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
+<<<<<<< HEAD
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
+=======
+    category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
+    price = models.IntegerField(null=True, blank=True)
+>>>>>>> 298866470486bbf3d48eff9109e045a9d2c2d5be
 
     def save_meal(self):
         self.save()
 
     def delete_meal(self):
         self.delete()
-        
+
     def __str__(self):
         return self.name
 
@@ -90,11 +95,12 @@ class Schedule(models.Model):
 
     @classmethod
     def get_schedule_by_chef(cls, user_id):
-        return cls.objects.filter(user_chef = user_id, status = 'available').all()
+        return cls.objects.filter(user_chef=user_id, status='available').all()
 
     @classmethod
     def taken_schedule(cls, id):
-        cls.objects.filter(id = id).update(status = 'taken')
+        cls.objects.filter(id=id).update(status='taken')
+
 
 class Booking(models.Model):
     user_client = models.ForeignKey(settings.AUTH_USER_MODEL, max_length=40, on_delete=models.CASCADE)
@@ -104,11 +110,3 @@ class Booking(models.Model):
 
     def save_booking(self):
         self.save()
-
-
-
-
-
-
-
-

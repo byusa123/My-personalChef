@@ -11,8 +11,35 @@
         <title>Personal Chef</title>
         <link href="{% static 'dist/css/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+       .sm{
+           background-color: wheat;
+       }
+       .bt{
+           background-color: orange;
+           color: white;
+           border: white;
+       }
+       .bt:hover{
+           background-color: white;
+           color: orange;
+           border: white;
+       }
+       .sm1{
+           color: orange;
+       }
+       .sm1:hover{
+           color: white;
+           background-color: orange;
+
+       }
+
+
+        
+    </style>
     </head>
-    <body class="bg-primary">
+    <!-- bg-primary -->
+    <body class="sm">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -39,15 +66,15 @@
                                                 </div>
                                             </div>
                                             <!-- <div class="form-group d-flex align-items-center justify-content-between mt-2 mb-0"> -->
-                                                <a class="small" href="password.html">Forgot Password?</a>
+                                          <a class=" sm1 small" href="password.html">Forgot Password?</a>
                                                
-                                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                                                    <button type="submit" class=" bt btn btn-lg btn-block">Sign in</button>
                                                
                                             <!-- </div> -->
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="{% url 'signup' %}">Need an account? Sign up!</a></div>
+                                        <div class="small"><a  class="sm1" href="{% url 'signup' %}">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
