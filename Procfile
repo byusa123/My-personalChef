@@ -1,1 +1,1 @@
-web: gunicorn personalChef.wsgi
+web: gunicorn personalChef.wsgi --log-file -
