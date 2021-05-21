@@ -1078,15 +1078,11 @@ chefs
 
 #chefs .chef-item {
   text-align: center;
-  border: 1px solid #afafaf;
   padding: 5px;
   transition: all .5s;
-  border-radius: 3px;
+ 
 }
 
-#chefs .chef-item:hover {
-  border-color: #fb5849;
-}
 
 #chefs .chef-item:hover .down-content h4 {
   color: #fb5849;
