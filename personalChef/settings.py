@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mainApp',
     'crispy_forms',
     'rest_framework',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+               
             ],
         },
     },
@@ -90,8 +92,8 @@ DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'personalchef',
-        'USER': 'test',
-        'PASSWORD': 'test1234',
+        'USER': 'charity',
+        'PASSWORD': '21193',
         'HOST': 'localhost',
         'PORT': '5432',
         }
@@ -144,7 +146,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -157,5 +159,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STAR_RATINGS_RERATE = False
 LOGIN_REDIRECT_URL = 'dashboard2'
 LOGOUT_REDIRECT_URL = 'homePage'
