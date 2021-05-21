@@ -9,11 +9,12 @@ from django.views.generic import ListView, CreateView, DetailView
 from .forms import *
 
 # Create your views here.
-'''
-Function written by INGABIRE PART
-'''
 
 
+
+'''
+Start of chefdashboard functions
+'''
 def addMeals(request):
     form = CreateMealsForm(request=request)
 
@@ -25,7 +26,9 @@ def addMeals(request):
 
     context = {'form': form}
     return render(request, 'chefDashboard/addmeals.html', context)
-
+'''
+End of chefdashboard functions
+'''
 
 def index(request):
     chefs = User.objects.filter(is_chef=True)
@@ -35,40 +38,45 @@ def index(request):
     context = {'chefs': chefs, 'meals_lunch': meals_lunch, 'meals_break': meals_break, 'meals_dinner': meals_dinner}
     return render(request, 'index.html', context)
 
-'''
-Function written by INGABIRE END
-'''
-
-
-# def index(request):
-#     user_chef = User.objects.all()
-#
-#     meals = Meal.objects.all()
-#     print(meals)
-#
-#     return render(request, 'index.html', {"user_chef": user_chef, "meals": meals})
-#
-
-# class indexView(ListView):
-#     template_name = 'index.html'
-#     model = Meal
-
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context=super(indexView, self).get_context_data(**kwargs)
-#         context['all_break'] = Meal.objects.filter(category ='Breakfast')
-#         return context
-
 
 def chef_detail(request, id):
-    single_chef = User.objects.get(pk=id)
+    chef = User.objects.get(pk=id)
+    # chef = User.objects.filter(pk=self.kwargs['user_id']).first()
     schedules = Schedule.get_schedule_by_chef(id)
-    return render(request, 'chef_detail.html', {"single_chef": single_chef, "schedules": schedules})
+    return render(request, 'chef_detail.html', {"chef": chef, "schedules": schedules})
+
+# def book(request,schedule_id):
+
+#     if request.method=='POST':
 
 
+#     else:
+#         form = BookingForm()
+#         return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
+
+def book(request,schedule_id):
+
+    if request.method=='POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            phone_number = form.cleaned_data['phone_number']
+            numberOfPeople = form.cleaned_data['numberOfPeople']
+            location = form.cleaned_data['location']
+            schedule = Schedule.objects.get(pk=schedule_id)
+            new_booking = Booking(first_name = first_name, last_name = last_name,  email = email, phone_number=phone_number, numberOfPeople=numberOfPeople, location=location, schedule = schedule )
+            new_booking.save()
+            Schedule.taken_schedule(schedule_id)
+            # scontextend_welcome_email(first_name,last_name,schedule,email)
+            return render(request, 'booking-success.html', {"booking":new_booking})
+    else:
+        form = BookingForm()
+        return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
 '''
 API PART START
 '''
-
 
 class MealList(APIView):
     def get(self, request, format=None):

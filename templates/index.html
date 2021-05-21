@@ -2,23 +2,18 @@
 {% load static %}
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <title>My Personal Chef</title>
-<!--
-    
-TemplateMo 558 Klassy Cafe
-
-https://templatemo.com/tm-558-klassy-cafe
-
--->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 
@@ -30,12 +25,12 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
 
-    </head>
-    
-    <body>
-    
+</head>
 
-    
+<body>
+
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -43,7 +38,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a  href="{% url 'index' %}" class="logo">
                             <img src="{% static 'images/chefflogo.png' %}" width="100" height="20">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -53,10 +48,10 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section"><a href="#about">About</a></li>
 
                             <li class="scroll-to-section"><a href="#menu">Meal</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
 
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
-                        </ul>        
+                        </ul>
                         <a class='menu-trigger'>
                             <span>Meal</span>
                         </a>
@@ -78,7 +73,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h4>MyPersonalChef</h4>
                             <h6>Do You Miss Your Homely Meals?</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#reservation">Book A Chef</a>
+                                <a href="#chefs">Book A Chef</a>
                             </div>
                         </div>
                     </div>
@@ -86,27 +81,27 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-8">
                     <div class="main-banner header-text">
                         <div class="Modern-Slider">
-                          <!-- Item -->
-                          <div class="item">
-                            <div class="img-fill">
-                                <img  src="{% static 'images/slide01.jpg' %}" alt="">
+                            <!-- Item -->
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="{% static 'images/slide07.jpg' %}" alt="">
+                                </div>
                             </div>
-                          </div>
-                          <!-- // Item -->
-                          <!-- Item -->
-                          <div class="item">
-                            <div class="img-fill">
-                               <img src="{% static 'images/slide02.jpg' %}"alt="">
+                            <!-- // Item -->
+                            <!-- Item -->
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="{% static 'images/slide08.jpg' %}" alt="">
+                                </div>
                             </div>
-                          </div>
-                          <!-- // Item -->
-                          <!-- Item -->
-                          <div class="item">
-                            <div class="img-fill">
-                               <img src="{% static 'images/slide03.jpg' %}" alt="">
+                            <!-- // Item -->
+                            <!-- Item -->
+                            <div class="item">
+                                <div class="img-fill">
+                                    <img src="{% static 'images/slide09.jpg' %}" alt="">
+                                </div>
                             </div>
-                          </div>
-                          <!-- // Item -->
+                            <!-- // Item -->
                         </div>
                     </div>
                 </div>
@@ -125,16 +120,19 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h6>About Us</h6>
                             <h2>Do You Miss Your Homely Meals?</h2>
                         </div>
-                        <p>My Personal Chef is one of the best, we came to the understanding that food excites everyone. Well, hunger at least is something we all agree upon without much ado. And nothing satisfies you like a delicious homely preparation. <br><br>This is an app that serves those with a craving for specific homely dishes and wants it prepared at their home. </p>
+                        <p>My Personal Chef is one of the best, we came to the understanding that food excites everyone.
+                            Well, hunger at least is something we all agree upon without much ado. And nothing satisfies
+                            you like a delicious homely preparation. <br><br>This is an app that serves those with a
+                            craving for specific homely dishes and wants it prepared at their home. </p>
                         <div class="row">
                             <div class="col-4">
-                                 <img  src="{% static 'images/about-thumb-01.jpg' %}" alt="">
+                                <img src="{% static 'images/about-thumb-01.jpg' %}" alt="">
                             </div>
                             <div class="col-4">
-                               <img src="{% static 'images/about-thumb-02.jpg' %}"alt="">
+                                <img src="{% static 'images/about-thumb-02.jpg' %}" alt="">
                             </div>
                             <div class="col-4">
-                              <img src="{% static 'images/about-thumb-03.jpg' %}"alt="">
+                                <img src="{% static 'images/about-thumb-03.jpg' %}" alt="">
                             </div>
                         </div>
                     </div>
@@ -143,7 +141,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="right-content">
                         <div class="thumb">
                             <!-- <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a> -->
-                            <img src="{% static 'images/chefs-03.jpg' %}"  height="500
+                            <img src="{% static 'images/chefs-03.jpg' %}" height="500
                             " alt="">
                         </div>
                     </div>
@@ -152,9 +150,6 @@ https://templatemo.com/tm-558-klassy-cafe
         </div>
     </section>
     <!-- ***** About Area Ends ***** -->
-
-    \
-
     <!-- ***** Chefs Area Starts ***** -->
     <section class="section" id="chefs">
         <div class="container">
@@ -168,26 +163,22 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
             <div class="row">
                 {% for chef in chefs %}
-                     <div class="col-lg-4">
-                    <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google"></i></a></li>
-                            </ul>
-                            <img src="{{ chef.profile_pic.url }}" alt="">
+                <div class="col-lg-4">
+                    <a href="{% url 'chef_detail' chef.id %}">
+                        <div class="chef-item">
+                            <div class="thumb">
+                                <img src="{{ chef.profile_pic.url }}" alt="">
+                            </div>
+                            <div class="down-content">
+                                <h4>{{ chef.first_name }} {{ chef.last_name }}</h4>
+                                <span>Pancake Chef</span>
+                            </div>
                         </div>
-                        <div class="down-content">
-                            <h4>{{ chef.first_name }} {{ chef.last_name }}</h4>
-                            <span>Pancake Chef</span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 {% endfor %}
-
             </div>
+
         </div>
     </section>
     <!-- ***** Chefs Area Ends ***** -->
@@ -198,7 +189,7 @@ https://templatemo.com/tm-558-klassy-cafe
             <div class="row">
                 <div class="col-lg-4 offset-lg-4 text-center">
                     <div class="section-heading">
-                        <h6>Our cheefs</h6>
+                        <h6>Our chefs</h6>
                         <h2>This Week’s Special Meal Offers</h2>
                     </div>
                 </div>
@@ -211,9 +202,12 @@ https://templatemo.com/tm-558-klassy-cafe
                                 <div class="row">
                                     <div class="col-lg-6 offset-lg-3">
                                         <ul>
-                                          <li><a href='#tabs-1'><img src="{% static 'images/tab-icon-01.png' %}" alt="">Breakfast</a></li>
-                                          <li><a href='#tabs-2'><img src="{% static 'images/tab-icon-02.png' %}" alt="">Lunch</a></li>
-                                          <li><a href='#tabs-3'><img src="{% static 'images/tab-icon-03.png' %}" alt="">Dinner</a></li>
+                                            <li><a href='#tabs-1'><img src="{% static 'images/tab-icon-01.png' %}"
+                                                        alt="">Breakfast</a></li>
+                                            <li><a href='#tabs-2'><img src="{% static 'images/tab-icon-02.png' %}"
+                                                        alt="">Lunch</a></li>
+                                            <li><a href='#tabs-3'><img src="{% static 'images/tab-icon-03.png' %}"
+                                                        alt="">Dinner</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -224,13 +218,13 @@ https://templatemo.com/tm-558-klassy-cafe
                                 <article id='tabs-1'>
                                     <div class="row">
                                         {% for foo in meals_break %}
-                                          <div class="col-lg-6">
+                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="left-list">
                                                     <div class="col-lg-12">
                                                         <div class="tab-item">
-                                                            <img src="{{ foo.meal_image.url }}" alt="" >
-                                                           <h4>{{ foo.name }}</h4>
+                                                            <img src="{{ foo.meal_image.url }}" alt="">
+                                                            <h4>{{ foo.name }}</h4>
                                                             <p>{{ foo.description }}</p>
                                                             <div class="price">
                                                                 <h6>${{ foo.price }}</h6>
@@ -241,19 +235,17 @@ https://templatemo.com/tm-558-klassy-cafe
                                             </div>
                                         </div>
                                         {% endfor %}
-
                                     </div>
-                                </article>  
+                                </article>
                                 <article id='tabs-2'>
                                     <div class="row">
                                         {% for lun in meals_lunch %}
-                                            <div class="col-lg-6">
+                                        <div class="col-lg-6 ">
                                             <div class="row">
                                                 <div class="left-list">
-
                                                     <div class="col-lg-12">
-                                                        <div class="tab-item">
-                                                            <img src="{{ lun.meal_image.url }}" alt="" >
+                                                        <div class="tab-item" >
+                                                            <img src="{{ lun.meal_image.url }}" alt="">
                                                             <h4>{{ lun.name }}</h4>
                                                             <p>{{ lun.description }}</p>
                                                             <div class="price">
@@ -266,18 +258,14 @@ https://templatemo.com/tm-558-klassy-cafe
                                             </div>
                                         </div>
                                         {% endfor %}
-
-
                                     </div>
-                                </article>  
+                                </article>
                                 <article id='tabs-3'>
                                     <div class="row">
-
                                         {% for di in meals_dinner %}
-                                            <div class="col-lg-6">
+                                        <div class="col-lg-6">
                                             <div class="row">
                                                 <div class="left-list">
-
                                                     <div class="col-lg-12">
                                                         <div class="tab-item">
                                                             <img src="{{ di.meal_image.url }}" alt="">
@@ -293,7 +281,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                         </div>
                                         {% endfor %}
                                     </div>
-                                </article>   
+                                </article>
                             </section>
                         </div>
                     </div>
@@ -301,39 +289,39 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
         </div>
     </section>
-    <!-- ***** Chefs Area Ends ***** --> 
-    
+    <!-- ***** Chefs Area Ends ***** -->
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
                         <p>© Copyright My Personal chef Co.
-                        
-                        <br>Design: TemplateMo</p>
+
+                            <br>/p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-     <!-- jQuery -->
+    <!-- jQuery -->
     <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
 
     <!-- Bootstrap -->
@@ -357,20 +345,21 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <script>
 
-        $(function() {
+        $(function () {
             var selectedClass = "";
-            $("p").click(function(){
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("."+selectedClass).fadeOut();
-            setTimeout(function() {
-              $("."+selectedClass).fadeIn();
-              $("#portfolio").fadeTo(50, 1);
-            }, 500);
-                
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
             });
         });
 
     </script>
-  </body>
+</body>
+
 </html>
