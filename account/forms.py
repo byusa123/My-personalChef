@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from django.forms import ModelForm
 
+
 class createUserForm(UserCreationForm):
     class Meta:
         model = User
@@ -20,4 +21,12 @@ class createUserForm(UserCreationForm):
 #     class Meta:
 #         model = User
 #         fields = '__all__'
-#         exclude = ['username']       
+#         exclude = ['username']
+
+
+class UpdateChefForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
