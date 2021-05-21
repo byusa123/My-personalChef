@@ -1,0 +1,52 @@
+{% extends 'baseAdmin/base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+     <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                DataTable Example
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>UserID</th>
+                                                <th>UserName</th>
+                                                <th>First-Name</th>
+                                                <th>Last-Name</th>
+                                                <th>Email</th>
+                                                <th>Phone-Number</th>
+                                                <th>Update</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        {% for chef in form %}
+                                             <tr>
+                                                <td>{{ chef.id }}</td>
+                                                <td>{{ chef.username }}</td>
+                                                <td>{{ chef.first_name }}</td>
+                                                <td>{{ chef.last_name }}</td>
+                                                <td>{{ chef.email }}</td>
+                                                <td>{{ chef.phone_number }}</td>
+                                                <td><a class="btn btn-sm btn-info" href="{% url 'update_chefs' chef.id %}">Update</a></td>
+                                                <td><a class="btn btn-sm btn-danger" href="{% url 'delete_chefs' chef.id %}">Remove</a></td>
+                                            </tr>
+
+                                        {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+{% endblock %}

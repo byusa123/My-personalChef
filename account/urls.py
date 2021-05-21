@@ -9,4 +9,12 @@ urlpatterns = [
 
     path('register/', views.registerUser, name='register'),
     path('signup/', views.signUp, name='signup'),
+
+    path('all-chefs/', views.all_chef, name='all_chefs'),
+    path('update-chefs/<str:pk>/', views.update_chef, name='update_chefs'),
+    path('delete-chefs/<str:pk>/', views.delete_chef, name='delete_chefs'),
+
+    path('al-users/', views.all_users, name='al_users'),
+
+
 ]
