@@ -26,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^#oz=re!!70@u@&k%u6tztm0++%4ksx@cs5reojig0c6uxqf87'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 # DEBUG = False
 
 # ALLOWED_HOSTS = ['my-special-chef.herokuapp.com']
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -106,11 +106,11 @@ if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('personalchef'),
-           'USER': config('test'),
-           'PASSWORD': config('test1234'),
-           'HOST': config('localhost'),
-           'PORT': '5432',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
        }
        
    }
@@ -127,17 +127,17 @@ DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-# DATABASES = {
-#         'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'personalchef',
-#         'USER': 'test',
-#         'PASSWORD': 'test1234',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#         }
+DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'personalchef',
+        'USER': 'test',
+        'PASSWORD': 'test1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        }
 
-#     }
+    }
 
 
 # Password validation
