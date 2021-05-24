@@ -15,6 +15,11 @@ urlpatterns = [
     path('delete-chefs/<str:pk>/', views.delete_chef, name='delete_chefs'),
 
     path('al-users/', views.all_users, name='al_users'),
+    path('update-user/<str:pk>/', views.update_users, name='update_user'),
+    path('delete-user/<str:pk>/', views.delete_user, name='delete_user'),
+
+
+    path('apply/', views.chefApplication, name='apply'),
 
 
 ]

@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% load crispy_forms_field %}
 {% load crispy_forms_filters %}
+{% load static %}
 
 {% block content %}
 
@@ -15,7 +16,7 @@
                     <div class="col-lg-4">{{ form.name|as_crispy_field }}</div>
                     <div class="col-lg-4">{{ form.meal_image|as_crispy_field }}</div>
                     <div class="col-lg-4">{{ form.description|as_crispy_field }}</div>
-{#                    <div class="col-lg-4">{{ form.date_created|as_crispy_field }}</div>#}
+                    <div class="col-lg-4">{{ form.price|as_crispy_field }}</div>
                     <div class="col-lg-4">{{ form.category|as_crispy_field }}</div>
 
                     </div>

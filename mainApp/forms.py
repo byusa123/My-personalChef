@@ -15,12 +15,14 @@ class CreateMealsForm(ModelForm):
         self.fields['user_chef'].queryset = User.objects.filter(username=self.request.user.username)
         self.fields['user_chef'].empty_label = None
 
+
 class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = '__all__'
-       
+
+
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        exclude = ['schedule']       
+        exclude = ['schedule']

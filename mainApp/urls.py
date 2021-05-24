@@ -17,7 +17,17 @@ urlpatterns = [
     url(r'^api/booking/$', views.bookingList.as_view()),
 
     # api end ----------------#
+
     url('^add-meals/$', views.addMeals, name='add_meals'),
+    url('^all-meals/$', views.all_meals, name='all_meals'),
+    url('^update-meals/$', views.update_meal, name='update_meals'),
+    url('^delete-meals/$', views.delete_meal, name='delete_meals'),
+
+
+    url('^add-schedule/$', views.addSchedule, name='add_schedule'),
+
+
+
     url('^chef_detail/(\d+)$', views.chef_detail, name='chef_detail'),
     url(r'ratings/', include('star_ratings.urls', namespace='ratings')),
     url('^booking/(\d+)$', views.book, name='booking'),

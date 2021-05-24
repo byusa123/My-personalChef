@@ -1,0 +1,16 @@
+Metadata-Version: 2.0
+Name: click-threading
+Version: 0.4.4
+Summary: Multithreaded Click apps made easy
+Home-page: https://github.com/click-contrib/click-threading
+Author: Markus Unterwaditzer
+Author-email: markus@unterwaditzer.net
+License: MIT
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: click (>=5.0)
+Requires-Dist: futures; python_version < "3.2"
+
+UNKNOWN
+
+

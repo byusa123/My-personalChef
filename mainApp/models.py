@@ -30,7 +30,7 @@ STATUS = [
 class Meal(models.Model):
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, max_length=30, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-    meal_image = models.ImageField(upload_to='meals/', blank=True, default='food.png')
+    meal_image = models.ImageField(upload_to='meals', blank=True, default='food.png')
     description = models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
@@ -50,7 +50,7 @@ class Meal(models.Model):
 
 
 class Schedule(models.Model):
-    day = models.CharField(max_length=30,blank=True)
+    day = models.CharField(max_length=30, blank=True)
     hour = models.CharField(max_length=30, null=True)
     # date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=30, choices=STATUS, default='available')

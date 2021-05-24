@@ -35,8 +35,8 @@
                                                 <td>{{ user.last_name }}</td>
                                                 <td>{{ user.email }}</td>
                                                 <td>{{ user.phone_number }}</td>
-                                                <td><a class="btn btn-sm btn-info" href="#">Update</a></td>
-                                                <td><a class="btn btn-sm btn-danger" href="#">Remove</a></td>
+                                                <td><a class="btn btn-sm btn-info" href="{% url 'update_user' user.id %}">Update</a></td>
+                                                <td><a class="btn btn-sm btn-danger" href="{% url 'delete_user' user.id %}">Remove</a></td>
                                             </tr>
 
                                         {% endfor %}

@@ -30,7 +30,8 @@ DEBUG = True
 
 # DEBUG = False
 
-ALLOWED_HOSTS = ['my-special-chef.herokuapp.com']
+# ALLOWED_HOSTS = ['my-special-chef.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'star_ratings',
+
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'personalChef.urls'
@@ -195,7 +197,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

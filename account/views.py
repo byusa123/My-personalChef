@@ -40,7 +40,8 @@ def signUp(request):
             form.save()
             return redirect('homePage1')
             # username = form.cleaned_data.get('username')
-            # messages.success(request, 'The chef was successful created'+username)
+
+       # messages.success(request, 'The chef was successful created'+username)
 
     context = {'form': form}
     return render(request, 'registration/signup.html', context)
@@ -71,10 +72,35 @@ def delete_chef(request, pk):
             form.delete()
             return redirect('all_chefs')
     context = {'form': form}
-    return render(request, 'userManagement/delete-user.html', context)
+    return render(request, 'userManagement/delete-chef.html', context)
 
 
 def all_users(request):
     form = User.objects.all()
     context = {'form': form}
     return render(request, 'userManagement/allUsers.html', context)
+
+
+def update_users(request, pk):
+    user = User.objects.get(id=pk)
+    form = createUserForm(instance=user)
+    if request.method == 'POST':
+        form = createUserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('al_users')
+    context = {'form': form}
+    return render(request, 'userManagement/update-user.html', context)
+
+
+def delete_user(request, pk):
+    form = User.objects.get(id=pk)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form.delete()
+            return redirect('al_users')
+    context = {'form': form}
+    return render(request, 'userManagement/delete-chef.html', context)
+
+def chefApplication(request):
+    return render(request, 'registration/application.html')
