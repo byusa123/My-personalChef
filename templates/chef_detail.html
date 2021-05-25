@@ -89,7 +89,8 @@
                     <hr>
                     <p style="font-weight: bold;color: rgb(126, 123, 123);font-size: 16px;">Speciality:</p>
                     <h5 style="font-weight: bold;color: rgb(126, 123, 123);font-size: 16px;"> Overview</h5>
-                    <p> Rate:{% ratings chef %}</p>
+                    
+                   <a href="{%url 'login'%}"><button class="btn btn-sm" style="color: white; background-color: #FB6356;">Book A Chef</button></a>
                 </div>
             </div>
         </div>
@@ -127,6 +128,7 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    <p> Rate:{% ratings chef %}</p>
                 </div>
             </div>
         </div>

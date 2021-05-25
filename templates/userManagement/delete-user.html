@@ -10,9 +10,9 @@
     <div class="card">
     <h4 class="text-center mt-4">Are you sure you want to delete the "{{ form }}"</h4>
 
-    <form action="{% url 'delete_chefs' form.id %}" method="POST" class="text-center">
+    <form action="{% url 'delete_user' form.id %}" method="POST" class="text-center">
      {% csrf_token %}
-         <a href="{% url 'all_chefs' %}" class="btn btn-warning mb-3 btn-sm">cancel</a>
+         <a href="{% url 'al_users' %}" class="btn btn-warning mb-3 btn-sm">cancel</a>
          <input class="btn btn-danger btn-sm mb-3" type="submit" name="submit">
     </form>
     </div>

@@ -1,0 +1,1 @@
+web: gunicorn personalChef.wsgi --log-file -

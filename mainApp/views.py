@@ -11,24 +11,68 @@ from .forms import *
 # Create your views here.
 
 
-
 '''
 Start of chefdashboard functions
 '''
+
+
 def addMeals(request):
     form = CreateMealsForm(request=request)
 
     if request.method == 'POST':
-        form = CreateMealsForm(request.POST, request=request)
+        form = CreateMealsForm(request.POST, request.FILES, request=request)
         if form.is_valid():
             form.save()
             return redirect('add_meals')
 
     context = {'form': form}
     return render(request, 'chefDashboard/addmeals.html', context)
+
+
+def all_meals(request):
+    form = Meal.objects.filter(user_chef_id=request.user.id)
+    context = {'form': form}
+    return render(request, 'chefDashboard/allmeals.html', context)
+
+
+def update_meal(request, pk):
+    meal = Meal.objects.get(id=pk)
+    form = CreateMealsForm(instance=meal)
+    if request.method == 'POST':
+        form = CreateMealsForm(request.POST, instance=meal)
+        if form.is_valid():
+            form.save()
+            return redirect('all_meals')
+    context = {'form': form}
+    return render(request, 'chefDashboard/update-meal.html', context)
+
+
+def delete_meal(request, pk):
+    form = Meal.objects.get(id=pk)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form.delete()
+            return redirect('all_meals')
+    context = {'form': form}
+    return render(request, 'chefDashboard/delete-meal.html', context)
+
+
+def addSchedule(request):
+    form = ScheduleForm(request=request)
+    if request.method == 'POST':
+        form = ScheduleForm(request.POST, request=request)
+        if form.is_valid():
+            form.save()
+            return redirect('add_schedule')
+
+    context = {'form': form}
+    return render(request, 'chefDashboard/addSchedule.html', context)
+
+
 '''
 End of chefdashboard functions
 '''
+
 
 def index(request):
     chefs = User.objects.filter(is_chef=True)
@@ -45,6 +89,7 @@ def chef_detail(request, id):
     schedules = Schedule.get_schedule_by_chef(id)
     return render(request, 'chef_detail.html', {"chef": chef, "schedules": schedules})
 
+
 # def book(request,schedule_id):
 
 #     if request.method=='POST':
@@ -54,9 +99,8 @@ def chef_detail(request, id):
 #         form = BookingForm()
 #         return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
 
-def book(request,schedule_id):
-
-    if request.method=='POST':
+def book(request, schedule_id):
+    if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
@@ -66,17 +110,21 @@ def book(request,schedule_id):
             numberOfPeople = form.cleaned_data['numberOfPeople']
             location = form.cleaned_data['location']
             schedule = Schedule.objects.get(pk=schedule_id)
-            new_booking = Booking(first_name = first_name, last_name = last_name,  email = email, phone_number=phone_number, numberOfPeople=numberOfPeople, location=location, schedule = schedule )
+            new_booking = Booking(first_name=first_name, last_name=last_name, email=email, phone_number=phone_number,
+                                  numberOfPeople=numberOfPeople, location=location, schedule=schedule)
             new_booking.save()
             Schedule.taken_schedule(schedule_id)
             # scontextend_welcome_email(first_name,last_name,schedule,email)
-            return render(request, 'booking-success.html', {"booking":new_booking})
+            return render(request, 'booking-success.html', {"booking": new_booking})
     else:
         form = BookingForm()
-        return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
+        return render(request, 'booking.html', {"form": form, "schedule_id": schedule_id})
+
+
 '''
 API PART START
 '''
+
 
 class MealList(APIView):
     def get(self, request, format=None):

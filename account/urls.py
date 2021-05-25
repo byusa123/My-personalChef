@@ -15,6 +15,15 @@ urlpatterns = [
     path('delete-chefs/<str:pk>/', views.delete_chef, name='delete_chefs'),
 
     path('al-users/', views.all_users, name='al_users'),
+    path('update-user/<str:pk>/', views.update_users, name='update_user'),
+    path('delete-user/<str:pk>/', views.delete_user, name='delete_user'),
+
+
+    path('apply/', views.chefApplication, name='apply'),
+    path('all-applicants/', views.allApplication, name='applicants'),
+    path('view-applicant/<int:pk>/', views.viewApplication, name='view_applicants'),
+    path('approve-applicant/<int:pk>/', views.approveApplication, name='approve_applicants'),
+    path('deny-applicant/<int:pk>/', views.denyApplication, name='deny_applicants'),
 
 
 ]
