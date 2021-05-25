@@ -45,7 +45,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Chef Application Form</h3></div>
                                     <div class="card-body">
                                         <form method="post">
                                             {% csrf_token %}
@@ -53,29 +53,23 @@
                                             <div class="form-row">
                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">Username</label>
-                                                        {{form.username}}
+                                                        <label class="small mb-1" for="inputFirstName">First-Name</label>
+                                                        {{ form.first_name }}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">First Name</label>
-                                                        {{form.first_name}}
+                                                        <label class="small mb-1" for="inputFirstName">Last-Name</label>
+                                                        {{form.last_name}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputLastName">Last Name</label>
-                                                    {{form.last_name}}
+                                                        <label class="small mb-1" for="inputLastName">Email</label>
+                                                    {{form.email}}
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                        {{form.email}}
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="phone_number">Phone_number</label>
@@ -83,42 +77,28 @@
                                                     </div>
                                                 </div>
 
-
-                                            </div>
-
-
-
-                                            <!-- <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                {{form.email}}
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="phone_number">phone_number</label>
-                                                {{form.phone_number}}
-                                            </div> -->
-                                            <div class="form-row">
-                                                <div class="col-md-5">
+                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputPassword">Password</label>
-                                                       {{form.password1}}
+                                                        <label class="small mb-1" for="inputEmailAddress">Gender</label>
+                                                        {{form.gender}}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
+                                                 <div class="col-md-5">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-                                                       {{form.password2}}
+                                                        <label class="small mb-1" for="inputEmailAddress">Application Letter</label>
+                                                        {{form.app_letter}}
                                                     </div>
                                                 </div>
+
                                             </div>
+
                                             <div class="text-center"></div>
-                                            <button type="submit" class=" bt btn btn-primary btn-lg btn-block">Submit</button>
-                                            <a href="{% url 'index' %}" class=" bt btn btn-primary btn-lg btn-block">HOME</a>
-                                            <!-- <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="{% url 'dashboard2' %}">Create Account</a></div> -->
+                                            <button type="submit" class=" bt btn btn-primary btn-sm">Submit</button>
+                                            <a href="{% url 'index' %}" class=" bt btn btn-primary btn-sm">HOME</a>
+
                                         </form>
                                     </div>
-{#                                    <div class="card-footer text-center">#}
-{#                                        <div class="small"><a class="sm1" href="{% url 'login' %}">Have an account? Go to login</a></div>#}
-{#                                    </div>#}
+
                                 </div>
                             </div>
                         </div>

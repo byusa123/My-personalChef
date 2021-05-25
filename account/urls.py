@@ -20,6 +20,10 @@ urlpatterns = [
 
 
     path('apply/', views.chefApplication, name='apply'),
+    path('all-applicants/', views.allApplication, name='applicants'),
+    path('view-applicant/<int:pk>/', views.viewApplication, name='view_applicants'),
+    path('approve-applicant/<int:pk>/', views.approveApplication, name='approve_applicants'),
+    path('deny-applicant/<int:pk>/', views.denyApplication, name='deny_applicants'),
 
 
 ]

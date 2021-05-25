@@ -22,7 +22,7 @@ def home(request):
 def registerUser(request):
     form = createUserForm()
     if request.method == 'POST':
-        form = createUserForm(request.POST)
+        form = createUserForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             # username = form.cleaned_data.get('username')
@@ -102,5 +102,33 @@ def delete_user(request, pk):
     context = {'form': form}
     return render(request, 'userManagement/delete-chef.html', context)
 
+
+
 def chefApplication(request):
-    return render(request, 'registration/application.html')
+    form = ApplicationForm()
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
+    return render(request, 'registration/application.html', context)
+
+def allApplication(request):
+    form = Application.objects.filter(status='Pending')
+    context = {'form': form}
+    return render(request, 'userManagement/all-application.html', context)
+
+
+def approveApplication(request, pk):
+    form = Application.objects.get(id=pk).update(status='Active')
+    return redirect('applicants')
+
+def denyApplication(request, pk):
+    form = Application.objects.get(id=pk).update(status='Denied')
+    return redirect('applicants')
+
+
+def viewApplication(request, pk):
+    form = Application.objects.get(id=pk)
+    context = {'form': form}
+    return render(request, 'userManagement/view-application.html', context)

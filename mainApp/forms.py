@@ -2,7 +2,6 @@ from django.forms import ModelForm, fields
 from .models import *
 from django import forms
 
-
 class CreateMealsForm(ModelForm):
     class Meta:
         model = Meal

@@ -1,0 +1,46 @@
+{% extends 'baseAdmin/base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+       <div class="col-md-12">
+          <div class="tile">
+            <h5 class="card-title text-info text-center">Chef Application Request Details</h5>
+            <div class="tile-body">
+              <form class="row">
+                <div class="form-group col-md-4">
+                  <label class="control-label">First-Name</label>
+                  <p class="form-control">{{ form.first_name }}</p>
+                </div>
+                <div class="form-group col-md-5">
+                  <label class="control-label">Last-Name</label>
+                  <p class="form-control"> {{ form.last_name }}</p>
+                </div>
+
+                <div class="form-group col-md-5">
+                  <label class="control-label">Email Address</label>
+                  <p class="form-control">{{ form.email }}</p>
+                </div>
+                <div class="form-group col-md-5">
+                  <label class="control-label">Phone-Number</label>
+                  <p class="form-control">{{ form.phone_number }}</p>
+                </div>
+                <div class="form-group col-md-5">
+                  <label class="control-label">Gender</label>
+                  <p class="form-control">{{ form.gender }}</p>
+                </div>
+              </form>
+            </div>
+          </div>
+       </div>
+    </div>
+     <div class="text-center">
+        <a href="{% url 'approve_applicants' form.id %}" class="btn btn-info">Approve</a>
+        <a href="{% url 'deny_applicants' form.id %}" class="btn btn-info ml-2">Reject</a>
+    </div>
+
+
+{% endblock %}

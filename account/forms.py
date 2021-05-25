@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from django.forms import ModelForm
+from django import forms
 
 
 class createUserForm(UserCreationForm):
@@ -17,6 +18,8 @@ class createUserForm(UserCreationForm):
             'profile_pic',
             'is_chef'
         ]
+
+
 # class userForm(ModelForm):
 #     class Meta:
 #         model = User
@@ -29,4 +32,10 @@ class UpdateChefForm(UserCreationForm):
         model = User
         fields = '__all__'
 
+
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields ='__all__'
+        exclude = ['status']
 
