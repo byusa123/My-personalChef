@@ -20,6 +20,12 @@ class ScheduleForm(forms.ModelForm):
         model = Schedule
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request')
+        super(ScheduleForm, self).__init__(*args, **kwargs)
+        self.fields['user_chef'].queryset = User.objects.filter(username=self.request.user.username)
+        self.fields['user_chef'].empty_label = None
+
 
 class BookingForm(forms.ModelForm):
     class Meta:

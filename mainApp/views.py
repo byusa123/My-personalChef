@@ -7,6 +7,8 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.views.generic import ListView, CreateView, DetailView
 from .forms import *
+from .email import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -23,7 +25,7 @@ def addMeals(request):
         form = CreateMealsForm(request.POST, request.FILES, request=request)
         if form.is_valid():
             form.save()
-            return redirect('add_meals')
+            return redirect('all_meals')
 
     context = {'form': form}
     return render(request, 'chefDashboard/addmeals.html', context)
@@ -69,6 +71,12 @@ def addSchedule(request):
     return render(request, 'chefDashboard/addSchedule.html', context)
 
 
+def all_schedule(request):
+    form = Schedule.objects.filter(user_chef_id=request.user.id)
+    context = {'form': form}
+    return render(request, 'chefDashboard/allSchedule.html', context)
+
+
 '''
 End of chefdashboard functions
 '''
@@ -98,7 +106,7 @@ def chef_detail(request, id):
 #     else:
 #         form = BookingForm()
 #         return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
-
+@login_required()
 def book(request, schedule_id):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -114,7 +122,9 @@ def book(request, schedule_id):
                                   numberOfPeople=numberOfPeople, location=location, schedule=schedule)
             new_booking.save()
             Schedule.taken_schedule(schedule_id)
+
             # scontextend_welcome_email(first_name,last_name,schedule,email)
+            confirmation_email(first_name, last_name, schedule, email)
             return render(request, 'booking-success.html', {"booking": new_booking})
     else:
         form = BookingForm()

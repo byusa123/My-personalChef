@@ -19,9 +19,6 @@
                                                 <th>Username</th>
                                                 <th>Meal Name</th>
                                                 <th>Category</th>
-                                                <th>Price</th>
-                                                <th>Update</th>
-                                                <th>Remove</th>
                                             </tr>
                                         </thead>
 
@@ -32,9 +29,6 @@
                                                 <td>{{ meal.user_chef.username }}</td>
                                                 <td>{{ meal.name }}</td>
                                                 <td>{{ meal.category }}</td>
-                                                <td>{{ meal.price }}</td>
-                                                <td><a class="btn btn-sm btn-info" href="">Update</a></td>
-                                                <td><a class="btn btn-sm btn-danger" href="">Remove</a></td>
                                             </tr>
 
                                         {% endfor %}

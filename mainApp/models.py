@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.lookups import IsNull
 from account.models import *
 from personalChef import settings
+from datetime import datetime
 
 # Create your models here.
 
@@ -14,7 +15,9 @@ CATEGORY = [
 
 STATUS = [
     ('available', 'available'),
+    ('taken', 'taken'),
     ('notavailable', 'notavailable'),
+
 ]
 
 
@@ -34,7 +37,6 @@ class Meal(models.Model):
     description = models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
-    price = models.IntegerField(null=True, blank=True)
 
     def save_meal(self):
         self.save()
@@ -46,14 +48,15 @@ class Meal(models.Model):
         return self.name
 
     def all_meal(cls):
-        return cls.objects.all()   
+        return cls.objects.all()
+
+
+scheduler = datetime.today()
 
 
 class Schedule(models.Model):
-    day = models.CharField(max_length=30, blank=True)
-    hour = models.CharField(max_length=30, null=True)
-    # date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=30, choices=STATUS, default='available')
+    schedule_time = models.DateField(default=scheduler)
+    status = models.CharField(max_length=30, choices=STATUS, default='available', null=True)
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def save_schedule(self):
@@ -72,10 +75,10 @@ class Schedule(models.Model):
 
 
 class Booking(models.Model):
-    first_name = models.CharField(max_length=20,blank=True)
-    last_name = models.CharField(max_length=20,blank=True)
+    first_name = models.CharField(max_length=20, blank=True)
+    last_name = models.CharField(max_length=20, blank=True)
     email = models.EmailField(blank=True)
-    phone_number = models.CharField(max_length=20,blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     numberOfPeople = models.IntegerField(null=True)
     location = models.CharField(max_length=40, null=True, blank=True)

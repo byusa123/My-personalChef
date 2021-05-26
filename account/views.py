@@ -1,9 +1,16 @@
+from personalChef.settings import EMAIL_HOST_USER
+from mainApp import email
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from .models import User
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+import smtplib
+from email.message import EmailMessage
 
 
 # Create your views here.
@@ -19,14 +26,41 @@ def home(request):
     return render(request, 'baseAdmin/base.html')
 
 
+@login_required()
 def registerUser(request):
-    form = createUserForm()
-    if request.method == 'POST':
-        form = createUserForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            # username = form.cleaned_data.get('username')
-            # messages.success(request, 'The chef was successful created'+username)
+    try:
+
+        form = createUserForm()
+        if request.method == 'POST':
+            form = createUserForm(request.POST or None, request.FILES)
+            if form.is_valid():
+                form.save()
+
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password1')
+                email = form.cleaned_data.get('email')
+                fn = form.cleaned_data.get('first_name')
+                my_mail = EmailMessage()
+                my_mail['from'] = "MyChef"
+                my_mail["to"] = email
+                my_mail['subject'] = "MyChef Login Credentials"
+                email_content = f'Dear {fn.upper()}, Thank you, you have received this email because you have ' \
+                                f'Applied to be a chef at MyChef  you can use the following username and password ' \
+                                f'to login in to our website.  ' \
+                                f'Username: {username}  Password: {password}. ' \
+                                f'from MyChef'
+
+                my_mail.set_content(email_content)
+                with smtplib.SMTP(host="smtp.gmail.com", port=587) as help:
+                    help.ehlo()
+                    help.starttls()
+                    help.login('wemychef@gmail.com', 'wecode2020')
+                    help.send_message(my_mail)
+
+                    form = createUserForm()
+                messages.success(request, "User Created Successfully..")
+    except ValueError:
+        form = createUserForm()
 
     context = {'form': form}
     return render(request, 'registration/register.html', context)
@@ -41,7 +75,7 @@ def signUp(request):
             return redirect('homePage1')
             # username = form.cleaned_data.get('username')
 
-       # messages.success(request, 'The chef was successful created'+username)
+    # messages.success(request, 'The chef was successful created'+username)
 
     context = {'form': form}
     return render(request, 'registration/signup.html', context)
@@ -103,7 +137,6 @@ def delete_user(request, pk):
     return render(request, 'userManagement/delete-chef.html', context)
 
 
-
 def chefApplication(request):
     form = ApplicationForm()
     if request.method == 'POST':
@@ -114,26 +147,48 @@ def chefApplication(request):
     context = {'form': form}
     return render(request, 'registration/application.html', context)
 
+
 def allApplication(request):
     form = Application.objects.filter(status='Pending')
     context = {'form': form}
     return render(request, 'userManagement/all-application.html', context)
 
 
-# def approveApplication(request, pk):
-#     form = Application.objects.get(id=pk).update(status='Active')
-#     return redirect('applicants')
-
 def approveApplication(request, pk):
-    data = Application.objects.get(pk=pk)
-    form = ApproveApplicationForm()
-    if request.method == 'POST':
-        form = ApproveApplicationForm(request.POST, instance=data)
-        if form.is_valid():
-            form.save()
-            Application.objects.filter(pk=pk).update(status='Active')
-            messages.success(request, 'Application Approved Successfully!.')
-            return redirect('applicants')
+    try:
+        data = Application.objects.get(pk=pk)
+        form = ApproveApplicationForm(instance=data)
+        if request.method == 'POST':
+            form = ApproveApplicationForm(request.POST, instance=data)
+            if form.is_valid():
+                form.save()
+                Application.objects.filter(pk=pk).update(status='Active')
+
+                email = data.email
+                fn = data.first_name
+                my_mail = EmailMessage()
+                my_mail['from'] = "MyChef"
+                my_mail["to"] = email
+                my_mail['subject'] = "MyChef Application Accepted"
+                email_content = f'Dear {fn}, Thank you, you have received this email because you have ' \
+                                f'Applied to be a chef at MyChef.Your application was accepted' \
+                                f'you will soon receive your account credentials.  ' \
+                                f'from MyChef'
+
+                my_mail.set_content(email_content)
+                with smtplib.SMTP(host="smtp.gmail.com", port=587) as help:
+                    help.ehlo()
+                    help.starttls()
+                    help.login('wemychef@gmail.com', 'wecode2020')
+                    help.send_message(my_mail)
+
+                    form = ApproveApplicationForm()
+                messages.success(request, "Application Approved Successfully..")
+                return redirect('applicants')
+
+    except ValueError:
+        ApproveApplicationForm()
+
     context = {'form': form, 'data': data}
     return render(request, 'userManagement/approve.html', context)
 
