@@ -7,6 +7,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.views.generic import ListView, CreateView, DetailView
 from .forms import *
+from .email import *
 
 # Create your views here.
 
@@ -114,7 +115,9 @@ def book(request, schedule_id):
                                   numberOfPeople=numberOfPeople, location=location, schedule=schedule)
             new_booking.save()
             Schedule.taken_schedule(schedule_id)
+
             # scontextend_welcome_email(first_name,last_name,schedule,email)
+            confirmation_email(first_name,last_name,schedule,email)
             return render(request, 'booking-success.html', {"booking": new_booking})
     else:
         form = BookingForm()

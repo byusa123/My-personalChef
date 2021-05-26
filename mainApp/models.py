@@ -52,7 +52,7 @@ class Meal(models.Model):
 class Schedule(models.Model):
     day = models.CharField(max_length=30, blank=True)
     hour = models.CharField(max_length=30, null=True)
-    # date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=30, choices=STATUS, default='available')
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
