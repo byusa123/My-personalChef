@@ -110,6 +110,7 @@ def chefApplication(request):
         form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('login')
     context = {'form': form}
     return render(request, 'registration/application.html', context)
 
@@ -119,13 +120,36 @@ def allApplication(request):
     return render(request, 'userManagement/all-application.html', context)
 
 
+# def approveApplication(request, pk):
+#     form = Application.objects.get(id=pk).update(status='Active')
+#     return redirect('applicants')
+
 def approveApplication(request, pk):
-    form = Application.objects.get(id=pk).update(status='Active')
-    return redirect('applicants')
+    data = Application.objects.get(pk=pk)
+    form = ApproveApplicationForm()
+    if request.method == 'POST':
+        form = ApproveApplicationForm(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+            Application.objects.filter(pk=pk).update(status='Active')
+            messages.success(request, 'Application Approved Successfully!.')
+            return redirect('applicants')
+    context = {'form': form, 'data': data}
+    return render(request, 'userManagement/approve.html', context)
+
 
 def denyApplication(request, pk):
-    form = Application.objects.get(id=pk).update(status='Denied')
-    return redirect('applicants')
+    data = Application.objects.get(pk=pk)
+    form = ApproveApplicationForm()
+    if request.method == 'POST':
+        form = ApproveApplicationForm(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+            Application.objects.filter(pk=pk).update(status='Denied')
+            messages.success(request, 'Application Approved Successfully!.')
+            return redirect('applicants')
+    context = {'form': form, 'data': data}
+    return render(request, 'userManagement/reject.html', context)
 
 
 def viewApplication(request, pk):

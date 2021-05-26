@@ -19,7 +19,7 @@ class User(AbstractUser):
 STATUS = (
     ('Pending', 'Pending'),
     ('Active', 'Active'),
-    ('Denied', 'Dinied')
+    ('Denied', 'Denied')
 )
 
 
@@ -33,7 +33,7 @@ class Application(models.Model):
     email = models.CharField(max_length=50, unique=True)
     phone_number = models.CharField(max_length=50)
     gender = models.CharField(max_length=6, choices=GENDER)
-    app_letter = models.ImageField(upload_to='letter_files', default='Blank.png', blank=True, null=True)
+    app_letter = models.ImageField(upload_to='letter_files', default='next.png', blank=True)
     status = models.CharField(max_length=30, choices=STATUS, default='Pending', blank=True)
 
     def __str__(self):

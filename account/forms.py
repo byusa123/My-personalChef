@@ -36,6 +36,12 @@ class UpdateChefForm(UserCreationForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields ='__all__'
+        fields = '__all__'
         exclude = ['status']
+
+
+class ApproveApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ('status',)
 
