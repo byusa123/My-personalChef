@@ -50,10 +50,11 @@
                     </div>
                     <div class="card-body" style="padding: 10%;font-size: 15px;">
     
-                        <p> <span style="font-weight: bold;">First Name: </span> {{bookig.first_name}}</p>
+                        <p> <span style="font-weight: bold;">First Name: </span> {{booking.first_name}}</p>
                         <p> <span style="font-weight: bold;">Last Name: </span>  {{booking.last_name}}</p>
                         <p> <span style="font-weight: bold;">chef: </span>  {{booking.schedule.user_chef.first_name}} {{booking.schedule.user_chef.last_name}}</p>
-                        <p> <span style="font-weight: bold;">meal: </span>  </p>
+                        <p> <span style="font-weight: bold;">meal: </span>  {{booking.meal}} </p>
+                        <p> <span style="font-weight: bold;">Additional Informtion: </span>  {{booking.add_info }} </p>
                         <p> <span style="font-weight: bold;">Booked: </span>  {{booking.schedule.day}} {{booking.schedule.date }} {{booking.schedules.hour }}</p>
                     </div>
                     <div class="card-footer">
@@ -86,9 +87,7 @@
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright My Personal chef Co.
-
-                            <br></p>
+                        <p>© Copyright My Personal chef Co.</p>
                     </div>
                 </div>
             </div>

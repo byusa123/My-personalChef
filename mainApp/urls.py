@@ -22,15 +22,15 @@ urlpatterns = [
     url('^all-meals/$', views.all_meals, name='all_meals'),
     url('^update-meals/$', views.update_meal, name='update_meals'),
     url('^delete-meals/$', views.delete_meal, name='delete_meals'),
-
-
     url('^add-schedule/$', views.addSchedule, name='add_schedule'),
-
-
-
     url('^chef_detail/(\d+)$', views.chef_detail, name='chef_detail'),
     url(r'ratings/', include('star_ratings.urls', namespace='ratings')),
     url('^booking/(\d+)$', views.book, name='booking'),
+    url('^all_chefs',views.all_chef, name = 'all_chefs'),
+    url('^search_chef', views.search_chef, name='search_chef'),
+    url('^all_meals',views.all_meals, name = 'all_meals'),
+    url('^meal_detail/(\d+)$', views.meal_detail, name='meal_detail'),
+    url('^search_meal', views.search_meal, name='search_meal'),
     
     
 

@@ -34,7 +34,7 @@ class Meal(models.Model):
     description = models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
-    price = models.IntegerField(null=True, blank=True)
+    Calories = models.CharField(max_length=40, null=True, blank=True)
 
     def save_meal(self):
         self.save()
@@ -79,6 +79,8 @@ class Booking(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     numberOfPeople = models.IntegerField(null=True)
     location = models.CharField(max_length=40, null=True, blank=True)
+    meals = models.CharField(max_length=40, null=True, blank=True)
+    add_info = models.CharField(max_length=100, null=True, blank=True)
 
     def save_booking(self):
         self.save()
