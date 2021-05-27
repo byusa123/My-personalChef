@@ -91,14 +91,41 @@ def chef_detail(request, id):
     return render(request, 'chef_detail.html', {"chef": chef, "schedules": schedules})
 
 
-# def book(request,schedule_id):
+def all_chef(request):
+    chefs = User.objects.filter(is_chef=True)
+    return render(request, 'all_chefs.html', context={"chefs": chefs})
 
-#     if request.method=='POST':
+def search_chef(request):
+    if request.method == "GET":
+        searched = request.GET['searched']
+        chefs=User.objects.filter(first_name__contains=searched)
+        return render(request, 'search_chef.html',context={"searched":searched, "chefs":chefs})
+    else:
+        return render(request, 'search_chef.html',{})
+
+ 
 
 
-#     else:
-#         form = BookingForm()
-#         return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
+
+
+def all_meals(request):
+    meals= Meal.objects.all()
+    return render(request, 'all_meals.html' , context={"meals": meals})
+
+def meal_detail(request, id):
+    meals = Meal.objects.get(pk=id)
+    chef = User.objects.filter(pk=id)
+    return render(request, 'meal_details.html', {"meals": meals, "chef": chef})
+
+def search_meal(request):
+    if request.method == "GET":
+        searched = request.GET['searched']
+        meals=Meal.objects.filter(name__contains=searched)
+        return render(request, 'search_meal.html',context={"searched":searched, "meals":meals})
+    else:
+        return render(request, 'search_meal.html',{})
+
+
 
 def book(request, schedule_id):
     if request.method == 'POST':
@@ -110,9 +137,11 @@ def book(request, schedule_id):
             phone_number = form.cleaned_data['phone_number']
             numberOfPeople = form.cleaned_data['numberOfPeople']
             location = form.cleaned_data['location']
+            meals = form.cleaned_data['meals']
+            add_info = form.cleaned_data['add_info']
             schedule = Schedule.objects.get(pk=schedule_id)
             new_booking = Booking(first_name=first_name, last_name=last_name, email=email, phone_number=phone_number,
-                                  numberOfPeople=numberOfPeople, location=location, schedule=schedule)
+                                  numberOfPeople=numberOfPeople, location=location, meals=meals, add_info=add_info, schedule=schedule)
             new_booking.save()
             Schedule.taken_schedule(schedule_id)
 

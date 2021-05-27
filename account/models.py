@@ -5,12 +5,20 @@ from django.core.exceptions import ValidationError
 
 
 # Create your models here.
+SPECIALITY = (
+    ('African Cuisine', 'African Cuisine'),
+    ('Italian Cuisine', 'Italian Cuisine'),
+    ('Indian Cuisine', 'Indian Cuisine'),
+    ('none', 'none')
 
+)
 
 class User(AbstractUser):
     profile_pic = models.ImageField(upload_to='images/', default='defaulty.png')
     phone_number = models.CharField(unique=True, max_length=40)
     is_chef = models.BooleanField(default=False)
+    speciality = models.CharField(max_length=30, choices=SPECIALITY, default='none', blank=True)
+    rate = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
         return self.username

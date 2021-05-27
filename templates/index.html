@@ -47,8 +47,8 @@
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
 
-                            <li class="scroll-to-section"><a href="#offers">Meal</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'all_meals' %}">Meal</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'all_chefs' %}">Chefs</a></li>
 
                             <li class="scroll-to-section"><a href="{%url 'login'%}">Chef Login</a></li>
                         </ul>
@@ -171,7 +171,7 @@
                             </div>
                             <div class="down-content">
                                 <h4>{{ chef.first_name }} {{ chef.last_name }}</h4>
-                                <span>Pancake Chef</span>
+                                <span>{{ chef.speciality }}</span>
                             </div>
                         </div>
                     </a>
@@ -203,7 +203,7 @@
                                     <div class="col-lg-6 offset-lg-3">
                                         <ul>
                                             <li><a href='#tabs-1'><img src="{% static 'images/tab-icon-01.png' %}"
-                                                        alt="">Breakfast</a></li>
+                                                        alt="">BreakFast</a></li>
                                             <li><a href='#tabs-2'><img src="{% static 'images/tab-icon-02.png' %}"
                                                         alt="">Lunch</a></li>
                                             <li><a href='#tabs-3'><img src="{% static 'images/tab-icon-03.png' %}"
@@ -226,9 +226,7 @@
                                                             <img src="{{ foo.meal_image.url }}" alt="">
                                                             <h4>{{ foo.name }}</h4>
                                                             <p>{{ foo.description }}</p>
-                                                            <div class="price">
-                                                                <h6>${{ foo.price }}</h6>
-                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -312,9 +310,7 @@
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright My Personal chef Co.
-
-                            <br>/p>
+                        <p>© Copyright My Personal chef Co.</p>
                     </div>
                 </div>
             </div>
