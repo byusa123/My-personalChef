@@ -25,5 +25,7 @@ urlpatterns = [
     path('approve-applicant/<int:pk>/', views.approveApplication, name='approve_applicants'),
     path('deny-applicant/<int:pk>/', views.denyApplication, name='deny_applicants'),
 
+    path('users', views.DashboardView.as_view(), name='users'),
+
 
 ]

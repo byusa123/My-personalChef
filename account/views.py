@@ -11,6 +11,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 import smtplib
 from email.message import EmailMessage
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 
 # Create your views here.
@@ -72,7 +73,7 @@ def signUp(request):
         form = createUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('homePage1')
+            return redirect('login')
             # username = form.cleaned_data.get('username')
 
     # messages.success(request, 'The chef was successful created'+username)
@@ -211,3 +212,13 @@ def viewApplication(request, pk):
     form = Application.objects.get(id=pk)
     context = {'form': form}
     return render(request, 'userManagement/view-application.html', context)
+
+
+class DashboardView(ListView):
+    model = User
+    template_name = 'userManagement/dashboard.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DashboardView, self).get_context_data(**kwargs)
+        context['users'] = User.objects.all().count()
+        return context

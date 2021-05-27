@@ -65,7 +65,7 @@ def addSchedule(request):
         form = ScheduleForm(request.POST, request=request)
         if form.is_valid():
             form.save()
-            return redirect('add_schedule')
+            return redirect('all_schedule')
 
     context = {'form': form}
     return render(request, 'chefDashboard/addSchedule.html', context)

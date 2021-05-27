@@ -54,10 +54,17 @@ class Meal(models.Model):
 scheduler = datetime.today()
 
 
+
 class Schedule(models.Model):
     schedule_time = models.DateField(default=scheduler)
     status = models.CharField(max_length=30, choices=STATUS, default='available', null=True)
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def clean(self):
+        todo = datetime.today()
+        if self.schedule_time < datetime.date(todo):
+            raise ValidationError(f'Schedule can not be less than today '
+                                  f'please enter collect date to continue')
 
     def save_schedule(self):
         self.save()

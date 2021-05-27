@@ -1,6 +1,8 @@
 from django.forms import ModelForm, fields
 from .models import *
 from django import forms
+from django.forms.widgets import DateInput
+
 
 class CreateMealsForm(ModelForm):
     class Meta:
@@ -19,6 +21,12 @@ class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = '__all__'
+        labels = {
+            'schedule_time': ('Schedule'),
+        }
+        widgets = {
+            'schedule_time': DateInput(attrs={'type': 'date'})
+        }
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')

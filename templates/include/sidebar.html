@@ -2,19 +2,20 @@
 {% block content %}
 
 {% if user.is_staff %}
+
 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
      
         <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{% url 'users' %}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                Admin Dashboard
             </a>
             
             <div class="sb-sidenav-menu-heading">Interface</div>
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="icon fa fa-address-book"></i></div>
               Application
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -25,7 +26,7 @@
                 </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="icon fa fa-circle-o"></i></div>
                Manage Users
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -87,7 +88,9 @@
         Start Bootstrap
     </div>
 </nav>
+
 {% elif user.is_chef %}
+
 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
      
@@ -179,7 +182,7 @@
         
     </div>
 
-    
+
     <div class="sb-sidenav-footer">
         <div class="small">Logged in as:</div>
         Start Bootstrap
