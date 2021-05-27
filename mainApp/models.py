@@ -1,5 +1,5 @@
 from django.db import models
-# from django.db.models.deletion import CASCADE
+from django.db.models.deletion import CASCADE
 from django.db.models.lookups import IsNull
 from account.models import *
 from personalChef import settings
@@ -21,12 +21,6 @@ STATUS = [
 ]
 
 
-# APPOINTMENT = [
-#     ('waiting', 'waiting'),
-#     ('booked', 'booked'),
-#     ('active', 'active'),
-
-# ]
 
 # MEAL CLASS
 
@@ -37,10 +31,7 @@ class Meal(models.Model):
     description = models.CharField(max_length=100, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=40, choices=CATEGORY, default='Dinner')
-<<<<<<< HEAD
-=======
     Calories = models.CharField(max_length=40, null=True, blank=True)
->>>>>>> 6903abbda4e338d5934160d6de8c6567e6673814
 
     def save_meal(self):
         self.save()

@@ -22,7 +22,7 @@ def homePage(request):
     return render(request, 'firstPage.html')
 
 
-# @method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 def home(request):
     return render(request, 'baseAdmin/base.html')
 

@@ -115,12 +115,6 @@ def search_chef(request):
 
 
 
-<<<<<<< HEAD
-#     else:
-#         form = BookingForm()
-#         return render(request, 'booking.html', {"form":form, "schedule_id":schedule_id})
-@login_required()
-=======
 def all_meals(request):
     meals= Meal.objects.all()
     return render(request, 'all_meals.html' , context={"meals": meals})
@@ -140,7 +134,6 @@ def search_meal(request):
 
 
 
->>>>>>> 6903abbda4e338d5934160d6de8c6567e6673814
 def book(request, schedule_id):
     if request.method == 'POST':
         form = BookingForm(request.POST)

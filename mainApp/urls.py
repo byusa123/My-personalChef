@@ -22,16 +22,10 @@ urlpatterns = [
     url('^all-meals/$', views.all_meals, name='all_meals'),
     url('^update-meals/$', views.update_meal, name='update_meals'),
     url('^delete-meals/$', views.delete_meal, name='delete_meals'),
-<<<<<<< HEAD
 
     url('^add-schedule/$', views.addSchedule, name='add_schedule'),
     url('^all-schedule/$', views.all_schedule, name='all_schedule'),
 
-    url('^chef_detail/(\d+)$', views.chef_detail, name='chef_detail'),
-    url(r'ratings/', include('star_ratings.urls', namespace='ratings')),
-    url('^booking/(\d+)$', views.book, name='booking'),
-=======
-    url('^add-schedule/$', views.addSchedule, name='add_schedule'),
     url('^chef_detail/(\d+)$', views.chef_detail, name='chef_detail'),
     url(r'ratings/', include('star_ratings.urls', namespace='ratings')),
     url('^booking/(\d+)$', views.book, name='booking'),
@@ -42,6 +36,5 @@ urlpatterns = [
     url('^search_meal', views.search_meal, name='search_meal'),
     
     
->>>>>>> 6903abbda4e338d5934160d6de8c6567e6673814
 
 ]
