@@ -21,7 +21,6 @@ STATUS = [
 ]
 
 
-
 # MEAL CLASS
 
 class Meal(models.Model):
@@ -49,11 +48,13 @@ class Meal(models.Model):
 scheduler = datetime.today()
 
 
-
 class Schedule(models.Model):
     schedule_time = models.DateField(default=scheduler)
     status = models.CharField(max_length=30, choices=STATUS, default='available', null=True)
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.schedule_time
 
     def clean(self):
         todo = datetime.today()

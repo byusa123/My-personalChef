@@ -1,5 +1,5 @@
 Hello {{first_name}} {{last_name}},Here are your booking Details!
 Appointment Details
 {{schedule.user_chef.first_name}} {{schedule.user_chef.last_name}}
-{{schedule.day}}  {{schedule.hour }}
+{{schedule.schedule_time}}
 Thank you for  choosing us!

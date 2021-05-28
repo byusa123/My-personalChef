@@ -22,7 +22,7 @@ def homePage(request):
     return render(request, 'firstPage.html')
 
 
-@method_decorator(login_required, name='dispatch')
+@login_required
 def home(request):
     return render(request, 'baseAdmin/base.html')
 
@@ -82,7 +82,7 @@ def signUp(request):
     return render(request, 'registration/signup.html', context)
 
 
-def all_chef(request):
+def all_chef_users(request):
     form = User.objects.filter(is_chef=True)
     context = {'form': form}
     return render(request, 'userManagement/all-chefs.html', context)
@@ -195,15 +195,40 @@ def approveApplication(request, pk):
 
 
 def denyApplication(request, pk):
-    data = Application.objects.get(pk=pk)
-    form = ApproveApplicationForm()
-    if request.method == 'POST':
-        form = ApproveApplicationForm(request.POST, instance=data)
-        if form.is_valid():
-            form.save()
-            Application.objects.filter(pk=pk).update(status='Denied')
-            messages.success(request, 'Application Approved Successfully!.')
-            return redirect('applicants')
+    try:
+        data = Application.objects.get(pk=pk)
+        form = ApproveApplicationForm(instance=data)
+        if request.method == 'POST':
+            form = ApproveApplicationForm(request.POST, instance=data)
+            if form.is_valid():
+                form.save()
+                Application.objects.filter(pk=pk).update(status='Denied')
+
+                email = data.email
+                fn = data.first_name
+                my_mail = EmailMessage()
+                my_mail['from'] = "MyChef"
+                my_mail["to"] = email
+                my_mail['subject'] = "MyChef Application Denied"
+                email_content = f'Dear {fn}, Thank you, you have received this email because you have ' \
+                                f'Applied to be a chef at MyChef.Your application was denied ' \
+                                f'Thank you for applying.  ' \
+                                f'from MyChef'
+
+                my_mail.set_content(email_content)
+                with smtplib.SMTP(host="smtp.gmail.com", port=587) as help:
+                    help.ehlo()
+                    help.starttls()
+                    help.login('wemychef@gmail.com', 'wecode2020')
+                    help.send_message(my_mail)
+
+                    form = ApproveApplicationForm()
+                messages.success(request, "Application Denied ..")
+                return redirect('applicants')
+
+    except ValueError:
+        ApproveApplicationForm()
+
     context = {'form': form, 'data': data}
     return render(request, 'userManagement/reject.html', context)
 

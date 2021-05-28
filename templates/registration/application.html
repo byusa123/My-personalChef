@@ -49,48 +49,8 @@
                                     <div class="card-body">
                                         <form method="post">
                                             {% csrf_token %}
+                                                 {{ form|crispy }}
 
-                                            <div class="form-row">
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">First-Name</label>
-                                                        {{ form.first_name }}
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">Last-Name</label>
-                                                        {{form.last_name}}
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputLastName">Email</label>
-                                                    {{form.email}}
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="phone_number">Phone_number</label>
-                                                    {{form.phone_number}}
-                                                    </div>
-                                                </div>
-
-                                                 <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputEmailAddress">Gender</label>
-                                                        {{form.gender}}
-                                                    </div>
-                                                </div>
-                                                 <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <label class="small mb-1" for="inputEmailAddress">Application Letter</label>
-                                                        {{form.app_letter}}
-                                                    </div>
-                                                </div>
-
-                                            </div>
 
                                             <div class="text-center"></div>
                                             <button type="submit" class=" bt btn btn-primary btn-sm">Submit</button>
@@ -109,7 +69,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div class="text-muted">Copyright &copy; MyPsersonalChef</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

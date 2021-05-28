@@ -216,4 +216,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STAR_RATINGS_RERATE = False
 LOGIN_REDIRECT_URL = 'dashboard2'
-LOGOUT_REDIRECT_URL = 'homePage'
+LOGOUT_REDIRECT_URL = 'index'

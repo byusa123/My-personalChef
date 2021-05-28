@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from django.core.files import File
 from django.core.exceptions import ValidationError
 
-
 # Create your models here.
 SPECIALITY = (
     ('African Cuisine', 'African Cuisine'),
@@ -13,12 +12,13 @@ SPECIALITY = (
 
 )
 
+
 class User(AbstractUser):
     profile_pic = models.ImageField(upload_to='images/', default='defaulty.png')
     phone_number = models.CharField(unique=True, max_length=40)
     is_chef = models.BooleanField(default=False)
     speciality = models.CharField(max_length=30, choices=SPECIALITY, default='none', blank=True)
-    rate = models.CharField(max_length=30, blank=True)
+    rate = models.CharField(max_length=30, blank=True, verbose_name='Price/hr')
 
     def __str__(self):
         return self.username

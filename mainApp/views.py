@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.views.generic import ListView, CreateView, DetailView
 from .forms import *
 from .email import *
+
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -25,13 +26,13 @@ def addMeals(request):
         form = CreateMealsForm(request.POST, request.FILES, request=request)
         if form.is_valid():
             form.save()
-            return redirect('all_meals')
+            return redirect('all_meal_chef')
 
     context = {'form': form}
     return render(request, 'chefDashboard/addmeals.html', context)
 
 
-def all_meals(request):
+def all_meal_chef(request):
     form = Meal.objects.filter(user_chef_id=request.user.id)
     context = {'form': form}
     return render(request, 'chefDashboard/allmeals.html', context)
@@ -102,36 +103,34 @@ def all_chef(request):
     chefs = User.objects.filter(is_chef=True)
     return render(request, 'all_chefs.html', context={"chefs": chefs})
 
+
 def search_chef(request):
     if request.method == "GET":
         searched = request.GET['searched']
-        chefs=User.objects.filter(first_name__contains=searched)
-        return render(request, 'search_chef.html',context={"searched":searched, "chefs":chefs})
+        chefs = User.objects.filter(first_name__contains=searched)
+        return render(request, 'search_chef.html', context={"searched": searched, "chefs": chefs})
     else:
-        return render(request, 'search_chef.html',{})
-
- 
-
-
+        return render(request, 'search_chef.html', {})
 
 
 def all_meals(request):
-    meals= Meal.objects.all()
-    return render(request, 'all_meals.html' , context={"meals": meals})
+    meals = Meal.objects.all()
+    return render(request, 'all_meals.html', context={"meals": meals})
+
 
 def meal_detail(request, id):
     meals = Meal.objects.get(pk=id)
     chef = User.objects.filter(pk=id)
     return render(request, 'meal_details.html', {"meals": meals, "chef": chef})
 
+
 def search_meal(request):
     if request.method == "GET":
         searched = request.GET['searched']
-        meals=Meal.objects.filter(name__contains=searched)
-        return render(request, 'search_meal.html',context={"searched":searched, "meals":meals})
+        meals = Meal.objects.filter(name__contains=searched)
+        return render(request, 'search_meal.html', context={"searched": searched, "meals": meals})
     else:
-        return render(request, 'search_meal.html',{})
-
+        return render(request, 'search_meal.html', {})
 
 
 def book(request, schedule_id):
@@ -148,12 +147,13 @@ def book(request, schedule_id):
             add_info = form.cleaned_data['add_info']
             schedule = Schedule.objects.get(pk=schedule_id)
             new_booking = Booking(first_name=first_name, last_name=last_name, email=email, phone_number=phone_number,
-                                  numberOfPeople=numberOfPeople, location=location, meals=meals, add_info=add_info, schedule=schedule)
+                                  numberOfPeople=numberOfPeople, location=location, meals=meals, add_info=add_info,
+                                  schedule=schedule)
             new_booking.save()
             Schedule.taken_schedule(schedule_id)
 
             # scontextend_welcome_email(first_name,last_name,schedule,email)
-            confirmation_email(first_name, last_name, schedule, email)
+            # confirmation_email(first_name, last_name, schedule, email)
             return render(request, 'booking-success.html', {"booking": new_booking})
     else:
         form = BookingForm()
