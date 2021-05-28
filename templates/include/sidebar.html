@@ -2,19 +2,20 @@
 {% block content %}
 
 {% if user.is_staff %}
+
 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
      
         <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{% url 'users' %}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                Admin Dashboard
             </a>
             
             <div class="sb-sidenav-menu-heading">Interface</div>
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="icon fa fa-address-book"></i></div>
               Application
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -25,14 +26,14 @@
                 </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="icon fa fa-circle-o"></i></div>
                Manage Users
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{% url 'register' %}">RegisterChef</a>
-                    <a class="nav-link" href="{% url 'all_chefs' %}">Chef Management</a>
+                    <a class="nav-link" href="{% url 'all_chef_users' %}">Chef Management</a>
                     <a class="nav-link" href="{% url 'al_users' %}">All Users</a>
                 </nav>
             </div>
@@ -87,7 +88,9 @@
         Start Bootstrap
     </div>
 </nav>
+
 {% elif user.is_chef %}
+
 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
      
@@ -108,7 +111,7 @@
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{% url 'add_meals' %}">Add on Meals</a>
-                    <a class="nav-link" href="{% url 'all_meals' %}">Meals Management</a>
+                    <a class="nav-link" href="{% url 'all_meal_chef' %}">Meals Management</a>
                 </nav>
             </div>
 
@@ -120,7 +123,20 @@
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{% url 'add_schedule' %}">Add Schedule</a>
-                    <a class="nav-link" href="#">Schedule Management</a>
+                    <a class="nav-link" href="{% url 'all_schedule' %}">Schedule Management</a>
+                </nav>
+            </div>
+
+
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+              Booking
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="">All Booking</a>
+{#                    <a class="nav-link" href="">Schedule Management</a>#}
                 </nav>
             </div>
 
@@ -166,7 +182,7 @@
         
     </div>
 
-    
+
     <div class="sb-sidenav-footer">
         <div class="small">Logged in as:</div>
         Start Bootstrap

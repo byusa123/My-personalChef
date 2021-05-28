@@ -37,7 +37,9 @@
                                                 <td>{{ apply.email }}</td>
                                                 <td>{{ apply.phone_number }}</td>
                                                 <td>{{ apply.gender }}</td>
-                                                <td>{{ apply.app_letter.url}}</td>
+                                                <td><a href="{{ apply.app_letter.url }}" target="_blank">
+                                                     <img src="{{apply.app_letter.url}}" style="width: 50px; height: 30px;" alt="application letter image"></a>
+                                                </td>
                                                 <td><a class="btn btn-sm btn-info" href="{% url 'view_applicants' apply.id %} ">View </a></td>
 
                                             </tr>

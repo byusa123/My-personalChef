@@ -1,8 +1,9 @@
 from django.db import models
-# from django.db.models.deletion import CASCADE
+from django.db.models.deletion import CASCADE
 from django.db.models.lookups import IsNull
 from account.models import *
 from personalChef import settings
+from datetime import datetime
 
 # Create your models here.
 
@@ -14,16 +15,11 @@ CATEGORY = [
 
 STATUS = [
     ('available', 'available'),
+    ('taken', 'taken'),
     ('notavailable', 'notavailable'),
+
 ]
 
-
-# APPOINTMENT = [
-#     ('waiting', 'waiting'),
-#     ('booked', 'booked'),
-#     ('active', 'active'),
-
-# ]
 
 # MEAL CLASS
 
@@ -46,15 +42,25 @@ class Meal(models.Model):
         return self.name
 
     def all_meal(cls):
-        return cls.objects.all()   
+        return cls.objects.all()
+
+
+scheduler = datetime.today()
 
 
 class Schedule(models.Model):
-    day = models.CharField(max_length=30, blank=True)
-    hour = models.CharField(max_length=30, null=True)
-    date = models.DateTimeField(auto_now_add=True, null=True)
-    status = models.CharField(max_length=30, choices=STATUS, default='available')
+    schedule_time = models.DateField(default=scheduler)
+    status = models.CharField(max_length=30, choices=STATUS, default='available', null=True)
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.schedule_time
+
+    def clean(self):
+        todo = datetime.today()
+        if self.schedule_time < datetime.date(todo):
+            raise ValidationError(f'Schedule can not be less than today '
+                                  f'please enter collect date to continue')
 
     def save_schedule(self):
         self.save()
@@ -72,10 +78,10 @@ class Schedule(models.Model):
 
 
 class Booking(models.Model):
-    first_name = models.CharField(max_length=20,blank=True)
-    last_name = models.CharField(max_length=20,blank=True)
+    first_name = models.CharField(max_length=20, blank=True)
+    last_name = models.CharField(max_length=20, blank=True)
     email = models.EmailField(blank=True)
-    phone_number = models.CharField(max_length=20,blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     numberOfPeople = models.IntegerField(null=True)
     location = models.CharField(max_length=40, null=True, blank=True)

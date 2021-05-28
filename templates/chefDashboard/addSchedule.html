@@ -12,8 +12,7 @@
                 {% csrf_token %}
                 <div class="row">
 
-                    <div class="col-lg-4">{{ form.day|as_crispy_field }}</div>
-                    <div class="col-lg-4">{{ form.hour|as_crispy_field }}</div>
+                    <div class="col-lg-4">{{ form.schedule_time|as_crispy_field }}</div>
                     <div class="col-lg-4">{{ form.status|as_crispy_field }}</div>
                     <div class="col-lg-4">{{ form.user_chef|as_crispy_field }}</div>
                     </div>

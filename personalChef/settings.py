@@ -131,8 +131,8 @@ DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'personalchef',
-        'USER': 'charity',
-        'PASSWORD': '21193',
+        'USER': 'test',
+        'PASSWORD': 'test1234',
         'HOST': 'localhost',
         'PORT': '5432',
         }
@@ -204,6 +204,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+EMAIL_BACKEND = 'django.core.email.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -215,4 +216,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STAR_RATINGS_RERATE = False
 LOGIN_REDIRECT_URL = 'dashboard2'
-LOGOUT_REDIRECT_URL = 'homePage'
+LOGOUT_REDIRECT_URL = 'index'

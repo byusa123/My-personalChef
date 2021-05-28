@@ -16,15 +16,10 @@ class createUserForm(UserCreationForm):
             'last_name',
             'phone_number',
             'profile_pic',
-            'is_chef'
+            'is_chef',
+            'speciality',
+            'rate'
         ]
-
-
-# class userForm(ModelForm):
-#     class Meta:
-#         model = User
-#         fields = '__all__'
-#         exclude = ['username']
 
 
 class UpdateChefForm(UserCreationForm):
@@ -36,6 +31,11 @@ class UpdateChefForm(UserCreationForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields ='__all__'
+        fields = '__all__'
         exclude = ['status']
 
+
+class ApproveApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ('status',)

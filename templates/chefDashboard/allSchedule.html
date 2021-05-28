@@ -8,7 +8,7 @@
      <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                DataTable Example
+                               All Schedule
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -16,19 +16,19 @@
                                         <thead>
                                             <tr>
 
-                                                <th>Username</th>
-                                                <th>Meal Name</th>
-                                                <th>Category</th>
+                                                <th>Schedule Time</th>
+                                                <th>Schedule Status</th>
+
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                        {% for meal in form %}
+                                        {% for sec in form %}
                                              <tr>
 
-                                                <td>{{ meal.user_chef.username }}</td>
-                                                <td>{{ meal.name }}</td>
-                                                <td>{{ meal.category }}</td>
+                                                <td>{{ sec.schedule_time }}</td>
+                                                <td>{{ sec.status }}</td>
+
                                             </tr>
 
                                         {% endfor %}

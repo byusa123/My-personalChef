@@ -113,16 +113,16 @@
                     <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
                         <thead style="color: rgb(126, 123, 123);">
                             <tr>
-                                <th>Day</th>
-                                <th>Time</th>
+                                <th>Schedule Time</th>
+                                <th>Schedule Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for schedule in schedules %}
                             <tr>
-                                <td>{{schedule.day}}</td>
-                                <td>{{schedule.hour}}</td>
+                                <td>{{schedule.schedule_time}}</td>
+                                <td>{{schedule.status}}</td>
                                 <td>
                                     <a href="{% url 'booking' schedule.id %}" class="btn"
                                         style="background-color: #fb5849;;color: white;"><i class="far fa-edit"></i>

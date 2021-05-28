@@ -53,9 +53,9 @@
                         <p> <span style="font-weight: bold;">First Name: </span> {{booking.first_name}}</p>
                         <p> <span style="font-weight: bold;">Last Name: </span>  {{booking.last_name}}</p>
                         <p> <span style="font-weight: bold;">chef: </span>  {{booking.schedule.user_chef.first_name}} {{booking.schedule.user_chef.last_name}}</p>
-                        <p> <span style="font-weight: bold;">meal: </span>  {{booking.meal}} </p>
-                        <p> <span style="font-weight: bold;">Additional Informtion: </span>  {{booking.add_info }} </p>
-                        <p> <span style="font-weight: bold;">Booked: </span>  {{booking.schedule.day}} {{booking.schedule.date }} {{booking.schedules.hour }}</p>
+                        <p> <span style="font-weight: bold;">meal: </span>  {{booking.meals}} </p>
+                        <p> <span style="font-weight: bold;">Additional Information: </span>  {{booking.add_info }} </p>
+                        <p> <span style="font-weight: bold;">Booked: </span>  {{booking.schedule.schedule_time }}</p>
                     </div>
                     <div class="card-footer">
                         <a href="{% url 'index' %}" class="btn" style="float: right; background-color: #fb5849 ;color: white;font-weight: bold;">Done</a>
