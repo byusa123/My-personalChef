@@ -1,0 +1,52 @@
+
+{% extends 'baseAdmin/base.html' %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_field %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+   <div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card card-body">
+                <div class="row justify-content-center">
+                <img class="rounded-circle" src="{{request.user.profile_pic.url}}" style="width: 120px; height: 120px;" alt="Profile Image"></a>
+                </div>
+                <h3>Person Information</h3>{{ request.user.username }}
+            <hr>
+                <div class="row mt-5">
+                <div class="col-3">
+                    <h5>First Name</h5>
+                    <p>{{ request.user.first_name }}</p>
+                </div>
+                <div class="col-3">
+                    <h5>Last Name</h5>
+                    <p>{{ request.user.last_name }}</p>
+                </div>
+
+                <div class="col-3">
+                    <h5>Speciality</h5>
+                    <p>{{ request.user.speciality }}</p>
+                </div>
+                <div class="col-3">
+                    <h5>Email</h5>
+                    <p>{{ request.user.email }}</p>
+                </div>
+
+                     <div class="col-3">
+                    <h5>Phone Number</h5>
+                    <p>{{ request.user.phone_number }}</p>
+                </div>
+
+        </div>
+
+
+        </div>
+          <div class="right-content"><a href="{% url 'update_profiles' %}" class=" btn btn-sm btn-warning">Edit Profile</a></div>
+    </div>
+
+
+
+        </div>
+
+{% endblock %}

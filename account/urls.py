@@ -28,4 +28,10 @@ urlpatterns = [
     path('users', views.DashboardView.as_view(), name='users'),
 
 
+    path('view-profile', views.user_profiling, name='view_profile'),
+    path('update-profile', views.update_profile, name='update_profiles'),
+
+
+
+
 ]

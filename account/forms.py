@@ -28,6 +28,25 @@ class UpdateChefForm(UserCreationForm):
         fields = '__all__'
 
 
+class UpdateProfile(UserCreationForm):
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'password1',
+            'password2',
+            'first_name',
+            'last_name',
+            'phone_number',
+            'profile_pic',
+            'is_chef',
+            'speciality',
+
+        ]
+        
+
+
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
