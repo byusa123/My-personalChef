@@ -28,6 +28,13 @@ class UpdateChefForm(UserCreationForm):
         fields = '__all__'
 
 
+class UpdateProfile(UserCreationForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+        exclude = ['rate']
+
+
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application

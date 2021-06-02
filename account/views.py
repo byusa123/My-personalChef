@@ -95,9 +95,27 @@ def update_chef(request, pk):
         form = createUserForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('all_chefs')
+            return redirect('all_chef_users')
     context = {'form': form}
     return render(request, 'userManagement/update-chef.html', context)
+
+
+def update_profile(request):
+    user = User.objects.get(username=request.user.username)
+    form = UpdateProfile(instance=user)
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('view_profile')
+    context = {'form': form}
+    return render(request, 'chefDashboard/update-profile.html', context)
+
+
+def user_profiling(request):
+    data = User.objects.filter(username=request.user.username)
+    context = {'data': data}
+    return render(request, 'chefDashboard/profiling.html', context)
 
 
 def delete_chef(request, pk):
@@ -105,7 +123,7 @@ def delete_chef(request, pk):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form.delete()
-            return redirect('all_chefs')
+            return redirect('all_chef_users')
     context = {'form': form}
     return render(request, 'userManagement/delete-chef.html', context)
 
