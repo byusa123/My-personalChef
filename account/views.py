@@ -107,7 +107,7 @@ def update_profile(request):
         form = UpdateProfile(request.POST, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('view_profile')
+            return redirect('login')
     context = {'form': form}
     return render(request, 'chefDashboard/update-profile.html', context)
 
