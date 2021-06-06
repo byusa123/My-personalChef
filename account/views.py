@@ -11,6 +11,8 @@ from django.conf import settings
 from django.template.loader import render_to_string
 import smtplib
 from email.message import EmailMessage
+from mainApp.models import *
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 
@@ -24,7 +26,12 @@ def homePage(request):
 
 @login_required
 def home(request):
-    return render(request, 'baseAdmin/base.html')
+    chefs1 = User.objects.filter(is_chef=True)
+    meals_lunch = Meal.objects.filter(category='Lunch')
+    meals_break = Meal.objects.filter(category='BreakFast')
+    meals_dinner = Meal.objects.filter(category='Dinner')
+    context = {'chefs': chefs1, 'meals_lunch': meals_lunch, 'meals_break': meals_break, 'meals_dinner': meals_dinner}
+    return render(request, 'baseAdmin/base.html', context)
 
 
 @login_required()
@@ -118,6 +125,20 @@ def user_profiling(request):
     return render(request, 'chefDashboard/profiling.html', context)
 
 
+def client_profile(request, username):
+    client = get_object_or_404(User, username=username)
+    # if request.user == client:
+    #     return redirect('client_profile')
+    context = {'client': client}
+    return render(request, 'client_profile.html', context)
+
+
+# def client_profile(request):
+#     client = User.objects.filter(username=request.user.username)
+#     context = {'client': client}
+#     return render(request, 'client_profile.html', context)
+#
+
 def delete_chef(request, pk):
     form = User.objects.get(id=pk)
     if request.user.is_authenticated:
@@ -171,6 +192,12 @@ def allApplication(request):
     form = Application.objects.filter(status='Pending')
     context = {'form': form}
     return render(request, 'userManagement/all-application.html', context)
+
+
+def active_application(request):
+    form = Application.objects.filter(status='Active')
+    context = {'form': form}
+    return render(request, 'userManagement/active-applicants.html', context)
 
 
 def approveApplication(request, pk):

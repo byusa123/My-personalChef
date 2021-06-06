@@ -99,11 +99,13 @@ def chef_detail(request, id):
     return render(request, 'chef_detail.html', {"chef": chef, "schedules": schedules})
 
 
+@login_required(login_url='login')
 def all_chef(request):
     chefs = User.objects.filter(is_chef=True)
     return render(request, 'all_chefs.html', context={"chefs": chefs})
 
 
+@login_required(login_url='login')
 def search_chef(request):
     if request.method == "GET":
         searched = request.GET['searched']
@@ -113,11 +115,13 @@ def search_chef(request):
         return render(request, 'search_chef.html', {})
 
 
+@login_required(login_url='login')
 def all_meals(request):
     meals = Meal.objects.all()
     return render(request, 'all_meals.html', context={"meals": meals})
 
 
+@login_required(login_url='login')
 def meal_detail(request, id):
     meals = Meal.objects.get(pk=id)
     chef = User.objects.filter(pk=id)
@@ -133,6 +137,7 @@ def search_meal(request):
         return render(request, 'search_meal.html', {})
 
 
+@login_required(login_url='login')
 def book(request, schedule_id):
     if request.method == 'POST':
         form = BookingForm(request.POST)
