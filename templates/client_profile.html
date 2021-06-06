@@ -1,0 +1,79 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+     <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <img src="{{user.client.profile_pic.url}}">
+            </div>
+            <div class="col-7" style="margin-left: -0.38cm;">
+                <div style="margin-top:3%;">
+                    <!-- <p style="font-weight: bold;color: rgb(126, 123, 123);font-size: 20px;">Chef: -->
+                    <span style="font-weight: bold;color:#fb5849;font-size: 20px; text-transform: uppercase;">
+                        {{user.client.username}}
+                        {{user.client.first_name}}
+                        {{user.client.last_name}} </span>
+                    </p>
+                    <hr>
+                    <!-- <h5 style="font-weight: bold;color: rgb(126, 123, 123);font-size: 20px;"> Overview</h5> -->
+                    <p style="font-weight: bold;color: rgb(126, 123, 123);font-size: 16px;">Phone Number: <span>{{ user.client.phone_number }}</span></p>
+                    <p style="font-weight: bold;color: rgb(126, 123, 123);font-size: 16px;">Email<span>{{ user.client.email }}</span></p>
+                    <br>
+                    <br>
+                    <br>
+                   <a href="#"><button class="btn btn-sm" style="color: white; background-color: #FB6356;">Edit Profile</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <h3 class="text-center"
+            style="border-bottom: 4px solid #fb5849;font-weight: bold;max-width: 25%;margin: auto;color: grey;padding-bottom: 15px;">
+           My Bookings</h3>
+        <hr>
+        <br>
+
+
+{#        <div class="row">#}
+{#            <div class="card-body text-center">#}
+{#                <div class="table-responsive">#}
+{#                    <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">#}
+{#                        <thead style="color: rgb(126, 123, 123);">#}
+{#                            <tr>#}
+{#                                <th>Schedule Time</th>#}
+{#                                <th>Schedule Status</th>#}
+{#                                <th>Action</th>#}
+{#                            </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                            {% for schedule in schedules %}#}
+{#                            <tr>#}
+{#                                <td>{{schedule.schedule_time}}</td>#}
+{#                                <td>{{schedule.status}}</td>#}
+{#                                <td>#}
+{#                                    <a href="{% url 'booking' schedule.id %}" class="btn"#}
+{#                                        style="background-color: #fb5849;;color: white;"><i class="far fa-edit"></i>#}
+{#                                        Book</a>#}
+{#                                </td>#}
+{#                            </tr>#}
+{#                            {% endfor %}#}
+{#                        </tbody>#}
+{#                    </table>#}
+{#                    <br>#}
+{#                    <br>#}
+{#                    <br>#}
+{#                    <br>#}
+{#                    <br>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </div>
+    <!--****** chef details end *****-->
+    <br>
+    <br>
+    <br>
+   {% endblock %}

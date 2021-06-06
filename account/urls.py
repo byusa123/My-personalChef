@@ -21,6 +21,9 @@ urlpatterns = [
 
     path('apply/', views.chefApplication, name='apply'),
     path('all-applicants/', views.allApplication, name='applicants'),
+
+    path('active-applicant/', views.active_application, name='active_applicant'),
+
     path('view-applicant/<int:pk>/', views.viewApplication, name='view_applicants'),
     path('approve-applicant/<int:pk>/', views.approveApplication, name='approve_applicants'),
     path('deny-applicant/<int:pk>/', views.denyApplication, name='deny_applicants'),
@@ -29,6 +32,7 @@ urlpatterns = [
 
 
     path('view-profile', views.user_profiling, name='view_profile'),
+    path('client-profile/<username>/', views.client_profile, name='client_profile'),
     path('update-profile', views.update_profile, name='update_profiles'),
 
 

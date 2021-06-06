@@ -54,7 +54,7 @@ class Schedule(models.Model):
     user_chef = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.schedule_time
+        return str(self.schedule_time)
 
     def clean(self):
         todo = datetime.today()

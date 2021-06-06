@@ -42,6 +42,7 @@ class UpdateProfile(UserCreationForm):
             'profile_pic',
             'is_chef',
             'speciality',
+            'is_chef',
 
         ]
         
