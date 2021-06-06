@@ -32,7 +32,7 @@ urlpatterns = [
 
 
     path('view-profile', views.user_profiling, name='view_profile'),
-    path('client-profile/<username>/', views.client_profile, name='client_profile'),
+    path('client-profile', views.client_profile, name='client_profile'),
     path('update-profile', views.update_profile, name='update_profiles'),
 
 

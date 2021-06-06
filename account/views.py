@@ -125,19 +125,26 @@ def user_profiling(request):
     return render(request, 'chefDashboard/profiling.html', context)
 
 
-def client_profile(request, username):
-    client = get_object_or_404(User, username=username)
-    # if request.user == client:
-    #     return redirect('client_profile')
+# @login_required(login_url='login')
+# def user_profile_client(request, username):
+#     client = get_object_or_404(User, username=username)
+#     if request.user == client:
+#         return redirect('client_profile', username=request.user.username)
+#     # user_posts = client.profile_pic.posts.all()
+#     # followers = Follow.objects.filter(followers=user_prof.profile)
+#
+#     context = {
+#         'client': client,
+#         # 'user_posts': client,
+#
+#     }
+#     return render(request, 'client_profile.html', context)
+
+def client_profile(request):
+    client = User.objects.filter(username=request.user.username)
     context = {'client': client}
     return render(request, 'client_profile.html', context)
 
-
-# def client_profile(request):
-#     client = User.objects.filter(username=request.user.username)
-#     context = {'client': client}
-#     return render(request, 'client_profile.html', context)
-#
 
 def delete_chef(request, pk):
     form = User.objects.get(id=pk)

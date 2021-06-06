@@ -50,13 +50,13 @@
                                <ul class="nav">
 
                             <li class="scroll-to-section"><a href="{% url 'index' %}" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+
 
                             <li class="scroll-to-section"><a href="{% url 'all_meals' %}">Meal</a></li>
                             <li class="scroll-to-section"><a href="{% url 'all_chefs' %}">Chefs</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'client_profile' user.username %}">{{ user.username}}</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'client_profile' %}">{{ user.username}}</a></li>
 
-                            <li class="scroll-to-section"><a href="{%url 'logout'%}">LogOut</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'logout'%}">LogOut</a></li>
 
                         </ul>
 
